@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+menu()//游戏界面
+{
+    printf("       ************************\n");
+    printf("       ********1、play*********\n");
+    printf("       ********0、exit*********\n");
+    printf("       ************************\n");
+}
+
+void game()
+{
+    int ret = rand()%100+1;//调用rand函数前需要调用srand函数设置随机数的生成器
+    int num = 0;
+    int count = 0;
+    while(1)
+    {
+        printf("请输入所猜数字：");
+        scanf("%d",&num);
+        count++; //记录猜数次数
+        if(num == ret)
+            {
+                printf("恭喜你，猜对了！\n");
+                break;
+            }
+        else if(num > ret)
+            printf("你猜的偏大了\n");
+        else
+            printf("你猜的偏小了\n");
+    }
+    printf("你花费了%d次猜对\n",count);
+}
+
+int main()
+{
+    srand((unsigned int)time(NULL));//设置随机数的生成器
+    int input;
+    do
+    {
+        menu();
+        printf("请选择\n");
+        scanf("%d",&input);
+        switch(input)
+        {
+            menu();//输出游戏界面
+            case 1:
+                game();
+                break;
+            case 0:
+                break;
+        }
+
+    }
+    while(input);
+
+    //printf("Hello world!\n");
+    return 0;
+}
