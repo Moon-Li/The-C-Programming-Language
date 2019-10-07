@@ -1,0 +1,27 @@
+/*
+求十个数字中的最大数字
+*/
+#include<stdio.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+int main()
+{
+	int a[10]; //初始化
+	int max_num = 0;
+	int i = 0;
+	printf("请输入要判断的十个数字：");
+
+	for (i = 0; i < 10; i++)   //利用循环将数字输入数组中
+	{
+		scanf("%d", &a[i]);
+	}
+
+	for (i = 0; i < 10; i++)  //遍历数组找出最大数字
+	{
+		if (max_num < a[i])
+			max_num = a[i];
+	}
+	printf("最大数字是%d\n", max_num);
+	system("pause");
+	return 0;
+}

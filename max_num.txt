@@ -1,0 +1,42 @@
+/*
+三个数字按从大到小输出
+*/
+#include<stdio.h>
+#include<stdio.h>
+#pragma warning (disable:4996)
+
+int VS(int x, int y)  //判断大小并输出函数
+{
+	if (x > y)
+		printf("%4d%4d\n", x, y);
+	else
+		printf("%4d%4d\n", y, x);
+}
+
+int main()
+{
+	int a = 0;  //初始化
+	int b = 0;
+	int c = 0;
+	printf("请输入要判断的三个数字：");
+	scanf("%d%d%d", &a, &b, &c);
+
+	if (a > b && a>c)  //判断大小输出
+	{
+		printf("从大到小依次是：%d", a);
+		VS(b, c);
+	}
+	else if (b > a && b > c)
+	{
+		printf("从大到小依次是：%d", b);
+		VS(a, c);
+	}
+	else if (c > a && c > b)
+	{
+		printf("从大到小依次是：%d", c);
+		VS(a, b);
+	}
+
+	system("pause");
+	return 0;
+}
