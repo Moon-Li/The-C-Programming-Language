@@ -1,0 +1,71 @@
+/*
+快速排序算法
+*/
+#include<stdio.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+
+int Quick_sorting(int arr[], int left, int right);
+void Quick(int arr[], int left, int right, int n);
+int main()
+{
+	int n = 0;//数组长度
+	int i = 0;
+	int left = 0;
+	int arr[200];//数组大小
+	scanf("%d", &n);
+	int right = n - 1;
+	for (i = 0; i < n; i++)
+	{
+		scanf("%d", &arr[i]);
+	}
+	Quick(arr, left, right,n);
+
+	for (i = 0; i < n; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+
+
+	system("pause");
+	return 0;
+}
+
+void Quick(int arr[], int left, int right, int n)
+{
+	int ret;
+	if (left < right)
+	{
+		ret = Quick_sorting(arr, left, right);
+		Quick(arr, left, ret - 1, n);
+		Quick(arr, ret+1, right, n);
+	}
+}
+
+int Quick_sorting(int arr[], int left, int right)
+{
+	int x = arr[left];
+	while (left < right)
+	{
+		while (left < right && arr[right] >= x)
+		{
+			right--;
+		}
+		if (left < right)
+		{
+			arr[left] = arr[right];
+			left++;
+		}
+		while (left< right && arr[left] < x)
+		{
+			left++;
+		}
+		if (left < right)
+		{
+			arr[right] = arr[left];
+			right--;
+		}
+	}
+	arr[left] = x;
+	return left;
+}
