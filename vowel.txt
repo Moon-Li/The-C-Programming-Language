@@ -1,0 +1,42 @@
+/*
+找到字符串中第一个元音字母并输出
+*/
+#include<stdio.h>
+int main()
+{
+    char arr[100];
+    int i = 0;
+    int k = 0;
+    gets(arr);
+    for(i = 0; i < 100; i++)
+    {
+        switch(arr[i])
+        {
+            case 'a':
+            printf("%c",'a');
+            k = 1;
+            break;
+            case 'e':
+            printf("%c",'e');
+            k = 1;
+            break;
+            case 'i':
+            printf("%c",'i');
+            k = 1;
+            break;
+            case 'o':
+            printf("%c",'o');
+            k = 1;
+            break;
+            case 'u':
+            printf("%c",'u');
+            k = 1;
+            break;
+        }
+        if(k == 1)
+        break;
+    }
+    if(i == 100)
+    printf("%c",'n');
+    return 0;
+}
