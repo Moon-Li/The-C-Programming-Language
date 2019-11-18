@@ -1,0 +1,93 @@
+#include<stdio.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+
+int main()//杨氏矩阵查找数字
+{
+	int a[3][3] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+	int i = 0;
+	int j = 0;
+	int n = 0;
+	int flag = 0;
+	int count = 0;
+	scanf("%d", &n);
+	if (n < a[1][1])
+	{
+		for (i = 0; i <= 1; i++)
+		{
+			if (i != 1)
+			{
+				for (j = 0; j < 3; j++)
+				{
+					count++;
+					if (a[i][j] == n)
+					{
+						printf("%d\n", n);
+						flag = 1;
+						break;
+					}
+				}
+				if (flag == 1)
+					break;
+			}
+			else
+			{
+				for (j = 0; j < 1; j++)
+				{
+					count++;
+					if (a[i][j] == n)
+					{
+						printf("%d\n", n);
+						flag = 1;
+						break;
+					}
+				}
+				if (flag == 1)
+					break;
+
+			}
+		}
+	}
+	else
+	{
+		for (i = 1; i <= 2; i++)
+		{
+			if (i == 1)
+			{
+				for (j = 1; j < 3; j++)
+				{
+					count++;
+					if (a[i][j] == n)
+					{
+						printf("%d\n", n);
+						flag = 1;
+						break;
+					}
+				}
+				if (flag == 1)
+					break;
+			}
+			else
+			{
+				for (j = 0; j < 3; j++)
+				{
+					count++;
+					if (a[i][j] == n)
+					{
+						printf("%d\n", n);
+						flag = 1;
+						break;
+					}
+				}
+				if (flag == 1)
+					break;
+
+			}
+		}
+	}
+	if (flag == 0)
+		printf("没有找到\n");
+	printf("寻找次数：%d\n", count);
+	system("pause");
+	return 0;
+}
