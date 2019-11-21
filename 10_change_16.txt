@@ -1,0 +1,91 @@
+/*
+1.十进制转化十六进制
+2.十六进制转化十进制
+*/
+#include<stdio.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+
+//
+//int main()//十进制转化十六进制
+//{
+//	long long num = 0;
+//	scanf("%d", &num);
+//	int i = 0;
+//	int j = 0;
+//	int k = 0;
+//	int arr[20];
+//	while (num)
+//	{
+//		j = num % 16;
+//		num = num / 16;
+//		if (j < 10)
+//		{
+//			arr[i] = 48 + j;
+//		}
+//		else
+//		{
+//			switch (j)
+//			{
+//			case 10:
+//				arr[i] = 65;
+//				break;
+//			case 11:
+//				arr[i] = 66;
+//				break;
+//			case 12:
+//				arr[i] = 67;
+//				break;
+//			case 13:
+//				arr[i] = 68;
+//				break;
+//			case 14:
+//				arr[i] = 69;
+//				break;
+//			case 15:
+//				arr[i] = 70;
+//				break;
+//			}
+//		}
+//		i++;
+//	}
+//	for (k = i-1; k >= 0; k--)
+//	{
+//		printf("%c", arr[k]);
+//	}
+//
+//	system("pause");
+//	return 0;
+//}
+
+
+#include<math.h>
+int main()//十六进制转10进制
+{
+	char a[8] = { 0 };
+	int i = 0;
+	gets(a);
+	int sum = 0;
+	int tmp = 0;
+	int sz = strlen(a);
+	for (i = 0; i < sz; i++)
+	{
+		int k = a[i];
+			if (k > 64)
+			{
+				tmp = (int)pow(16, sz - 1 - i);
+				sum += (k - 55) * tmp;
+
+			}
+			else
+			{
+				tmp = (int)pow(16, sz - 1 - i);
+				sum += (k - 48) * tmp;
+
+			}
+	}
+	printf("%d", sum);
+
+	system("pause");
+	return 0;
+}
