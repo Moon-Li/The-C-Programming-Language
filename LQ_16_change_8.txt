@@ -1,0 +1,135 @@
+#include<stdio.h>
+#include<math.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+
+int main()
+{
+	char arr[10][100000];
+	int number = 0;//输入十六进制数个数
+	int key = 0;//控制输入次数
+	scanf("%d", &number);
+	for (key = 0; key < number; key++)
+	{
+		fflush(stdin);
+		gets(arr[key]);
+	}
+
+	/*
+	现存问题，输入数字长度不为三的倍数时，输出错误，
+	解决办法，对3取模，将余数为1，2时的前1，2位先输出，i值不重置，继续输出后面的位
+	*/
+	for (key = 0; key < number; key++)
+	{
+		int sz = strlen(arr[key]);//十六进制字符串长度
+		int j = 0;
+		int i = 0;
+		int r = 0;//b数组下标
+		if (sz % 3 == 2)
+		{
+			char b[3] = { 0 };//存八进制数字
+			int t = i;//暂存arr数组下标
+			int sum = 0;//十进制和
+			r = 2;//初始化b数组下标
+			for (j = 1; j >= 0; j--, t++)
+			{
+				i++;
+				int k = (int)pow(16, j);
+				if (arr[key][t] > 64)//将16进制转化为10进制加和
+				{
+					sum += k * (arr[key][t] - 55);
+				}
+				else
+				{
+					sum += k * (arr[key][t] - 48);
+				}
+			}
+			while (sum)//将10进制和转化为8进制
+			{
+				int p = sum % 8;
+				sum = sum / 8;
+				b[r] = p;
+				r--;
+			}
+			for (r = 0; r < 3; r++)//输出这个八进制数
+			{
+				if (i == 2 && r == 0 && b[r] == 0)
+					continue;
+				printf("%d", b[r]);
+			}
+		}
+
+		if (sz % 3 == 1)
+		{
+			char b[2] = { 0 };//存八进制数字
+			int t = i;//暂存arr数组下标
+			int sum = 0;//十进制和
+			r = 1;//初始化b数组下标
+			for (j = 0; j >= 0; j--, t++)
+			{
+				i++;
+				int k = (int)pow(16, j);
+				if (arr[key][t] > 64)//将16进制转化为10进制加和
+				{
+					sum += k * (arr[key][t] - 55);
+				}
+				else
+				{
+					sum += k * (arr[key][t] - 48);
+				}
+			}
+			while (sum)//将10进制和转化为8进制
+			{
+				int p = sum % 8;
+				sum = sum / 8;
+				b[r] = p;
+				r--;
+			}
+			for (r = 0; r < 2; r++)//输出这个八进制数
+			{
+				if (i == 1 && r == 0 && b[r] == 0)
+					continue;
+				printf("%d", b[r]);
+			}
+		}
+
+
+		for (; i < sz; i += 3)
+		{
+			char b[4] = { 0 };//存八进制数字
+			int t = i;//暂存arr数组下标
+			int sum = 0;//十进制和
+			r = 3;//初始化b数组下标
+			for (j = 2; j >= 0; j--, t++)
+			{
+				int k = (int)pow(16, j);
+				if (arr[key][t] > 64)//将16进制转化为10进制加和
+				{
+					sum += k * (arr[key][t] - 55);
+				}
+				else
+				{
+					sum += k * (arr[key][t] - 48);
+				}
+			}
+			while (sum)//将10进制和转化为8进制
+			{
+				int p = sum % 8;
+				sum = sum / 8;
+				b[r] = p;
+				r--;
+			}
+			for (r = 0; r < 4; r++)//输出这个八进制数
+			{
+				if (i == 0 && r == 0 && b[r] == 0)
+					continue;
+				printf("%d", b[r]);
+			}
+		}
+		printf("\n");
+	}
+
+
+	system("pause");
+	return 0;
+}
