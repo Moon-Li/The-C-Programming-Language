@@ -6,7 +6,7 @@
 #include<windows.h>
 #pragma warning (disable:4996)
 
-//
+
 //int main()//十进制转化十六进制
 //{
 //	long long num = 0;
@@ -15,6 +15,8 @@
 //	int j = 0;
 //	int k = 0;
 //	int arr[20];
+//	if (num == 0)
+//		printf("%d", 0);
 //	while (num)
 //	{
 //		j = num % 16;
@@ -53,7 +55,6 @@
 //	{
 //		printf("%c", arr[k]);
 //	}
-//
 //	system("pause");
 //	return 0;
 //}
@@ -65,26 +66,26 @@ int main()//十六进制转10进制
 	char a[8] = { 0 };
 	int i = 0;
 	gets(a);
-	int sum = 0;
-	int tmp = 0;
+	double sum = 0;
+	double tmp = 0;
 	int sz = strlen(a);
 	for (i = 0; i < sz; i++)
 	{
 		int k = a[i];
 			if (k > 64)
 			{
-				tmp = (int)pow(16, sz - 1 - i);
+				tmp = pow(16, sz - 1 - i);
 				sum += (k - 55) * tmp;
 
 			}
 			else
 			{
-				tmp = (int)pow(16, sz - 1 - i);
+				tmp = pow(16, sz - 1 - i);
 				sum += (k - 48) * tmp;
 
 			}
 	}
-	printf("%d", sum);
+	printf("%.0lf", sum);
 
 	system("pause");
 	return 0;
