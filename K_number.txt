@@ -1,0 +1,89 @@
+#include<stdio.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+
+int Quick_sorting(long long b[], int left, int right);//对选出内容进行排序
+void Quick(long long b[], int left, int right);
+int main()
+{
+	long long arr[1000];
+	int n = 0;//元素个数
+	scanf("%d", &n);
+
+	int i = 0; 
+	for (i = 0; i < n; i++)//输入元素
+	{
+		scanf("%lld", &arr[i]);
+	}
+
+	int m = 0;//查询次数
+	scanf("%d", &m);
+
+	int left[1000];//起始位置
+	int right[1000];//结束位置
+	int k[1000];//找排第几的数
+	for (i = 0; i < m; i++)//输入m组数据
+	{
+		scanf("%d%d%d", &left[i], &right[i], &k[i]);
+	}
+	int j = 0;//依次处理m组数据
+	for (j = 0; j < m; j++)
+	{
+
+		long long brr[1000];//暂存要排序的片段
+		int num = 0;
+		for (i = left[j] - 1; i < right[j]; i++)
+		{
+			brr[num] = arr[i];
+			num++;
+		}
+		//对b进行排序，找出第k大的数
+		Quick(brr, 0, num-1);
+		int tmp = k[j];
+		printf("%d\n", brr[num - tmp]);
+
+	}
+
+	system("pause");
+	return 0;
+}
+
+void Quick(long long b[], int left, int right)//快排函数
+{
+	int ret = 0;
+	if (left < right)
+	{
+		ret = Quick_sorting(b, left, right);
+		Quick(b, left, ret-1);
+		Quick(b, ret + 1, right);
+	}
+}
+
+int Quick_sorting(long long b[], int left, int right)//对选出内容进行排序
+{
+	long long x = b[left];
+	while (left < right)
+	{
+		while (left < right && x <= b[right])
+		{
+			right--;
+		}
+		if (left < right)
+		{
+			b[left] = b[right];
+			left++;
+		}
+		while (left < right && x > b[left])
+		{
+			left++;
+		}
+		if (left < right)
+		{
+			b[left] = b[right];
+			right--;
+		}
+	}
+	b[left] = x;
+	return left;
+}
+
