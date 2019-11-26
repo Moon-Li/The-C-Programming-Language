@@ -1,0 +1,43 @@
+/*
+汉诺塔（递归）
+*/
+#include<stdio.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+
+void Move(char a, char b);
+
+void Hanoi(char a, char b, char c, int n);
+
+int count = 0;    //记录移动次数
+
+int main()
+{
+	int n = 0;
+	printf("请输入汉诺塔层数：");
+	scanf("%d", &n);
+	Hanoi('A', 'B', 'C', n);
+	printf("\n一共移动了%d次\n", count);
+	system("pause");
+	return 0;
+}
+
+void Move(char a, char b)
+{
+	count++;
+	printf("move %c-->%c\n", a, b);
+}
+
+void Hanoi(char a, char b, char c, int n)
+{
+	if (n == 1)
+	{
+		Move(a, c);
+	}
+	else
+	{
+		Hanoi(a, c, b, n - 1);
+		Move(a, c);
+		Hanoi(c, a, b, n - 1);
+	}
+}
