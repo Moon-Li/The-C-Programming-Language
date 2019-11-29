@@ -1,0 +1,29 @@
+/*
+任意行数乘法口诀表
+*/
+#include<stdio.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+
+void multiplication(int lin)
+{
+	int i, j;
+	for (i = 1; i <= lin; i++)
+	{
+		for (j = 1; j <= i; j++)
+		{
+			printf("%d*%d=%d  ", i, j, i*j);
+		}
+		printf("\n");
+	}
+}
+
+int main()
+{
+	int line;
+	printf("请输入要输出的乘法口诀的行数：\n");
+	scanf("%d", &line);
+	multiplication(line);
+	system("pause");
+	return 0;
+}
