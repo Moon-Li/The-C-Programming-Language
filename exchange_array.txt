@@ -1,0 +1,44 @@
+/*
+交换数组内容
+*/
+
+#include<stdio.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+
+Printf(char a[], int sz)
+{
+	int i = 0;
+	for (i = 0; i < sz; i++)
+	{
+		printf("%c", a[i]);
+	}
+	printf("\n");
+}
+
+int main()
+{
+	char arr1[10] = { 0 };
+	char arr2[10] = { 0 };
+	int sz = sizeof(arr1) / sizeof(arr1[0]);
+	char tmp = 0;
+	int i = 0;
+	printf("请输入要交换的两个字符型数组：");
+	gets(arr1);
+	gets(arr2);
+	printf("交换前\n");
+	Printf(arr1, sz);
+	Printf(arr2, sz);
+	for (i = 0; i < sz; i++)
+	{
+		tmp = arr1[i];
+		arr1[i] = arr2[i];
+		arr2[i] = tmp;
+	}
+	printf("交换后\n");
+	Printf(arr1, sz);
+	Printf(arr2, sz);
+
+	system("pause");
+	return 0;
+}
