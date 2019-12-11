@@ -1,0 +1,27 @@
+/*
+µİ¹é¼ÆËãnµÄ½×³Ë
+*/
+#include<stdio.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+
+Recursion(int x, int n)
+{
+	if (1 == n)
+		return x;
+	if (n > 1)
+		return x * Recursion(x, n - 1);
+}
+
+int main()
+{
+	int x = 0;
+	int n = 0;
+	printf("x^nÇëÊäÈëx,n\n");
+	scanf("%d%d", &x, &n);
+	int ret = Recursion(x,n);
+	printf("%d", ret);
+	system("pause");
+	return 0;
+
+}
