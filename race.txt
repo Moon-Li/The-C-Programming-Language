@@ -1,0 +1,55 @@
+#include<stdio.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+
+int main()
+{
+	int metre = 0;//兔子领先米数
+	int sec = 0;//休息时间
+	int V_rab = 0;//兔子速度
+	int V_tor = 0;//乌龟速度
+	int len = 0;//赛道长度
+
+	scanf("%d%d%d%d%d", &V_rab, &V_tor, &metre, &sec, &len);
+
+	int S_rab = 0;
+	int S_tor = 0;
+	int time = 0;
+	int flag = 0;
+
+	while (len - S_rab && len - S_tor)
+	{
+		flag--;
+		time++;
+		S_tor += V_tor;
+		
+		if (flag < 0)//判断兔子是否sleep
+			S_rab += V_rab;
+
+		if (S_rab - S_tor >= metre && flag < 0)//判断距离是否可以sleep
+			flag = sec;
+
+
+	}
+
+	if (S_rab == S_tor && S_rab == len)
+	{
+		printf("D\n");
+		printf("%d", time);
+	}
+	else if (S_rab == len)
+	{
+		printf("R\n");
+		printf("%d", time);
+	}
+	else if (S_tor == len)
+	{
+		printf("T\n");
+		printf("%d", time);
+	}
+
+
+
+	system("pause");
+	return 0;
+}
