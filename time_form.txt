@@ -1,0 +1,64 @@
+/*
+时间格式转化
+*/
+
+#include<stdio.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+
+//int main()
+//{
+//	long i = 0;
+//	scanf("%d", &i);
+//	printf("%d:", i / 3600);//输出小时
+//	i %= 3600;
+//	printf("%d:", i / 60);//输出分钟
+//	printf("%d", i % 60);//输出秒
+//
+//	system("pause");
+//	return 0;
+//	
+//}
+
+int main()
+{
+	char arr1[10] = { 0 };
+	char arr2[10] = { 0 };
+	gets(arr1);
+	gets(arr2);
+
+	int len1 = 0;
+	int len2 = 0;
+	len1 = strlen(arr1);
+	len2 = strlen(arr2);
+	if (len1 == len2)
+	{
+		if (!strcmp(arr1, arr2))
+		{
+			printf("%d", 2);
+		}
+		else
+		{
+			char * p1 = arr1;
+			char * p2 = arr2;
+			int n = 0;
+			while ((*p1 == *p2 || (*p1)-32 == *p2 || (*p1)+32 == *p2) && *p1 != 0)
+			{
+				p1++;
+				p2++;
+				n++;
+			}
+			if (n == len1)
+				printf("%d", 3);
+			else
+				printf("%d", 4);
+		}
+	}
+	else
+		printf("%d", 1);
+
+
+
+	system("pause");
+	return 0;
+}
