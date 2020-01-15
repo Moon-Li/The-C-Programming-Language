@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+
+int main()
+{
+	char *num[] = {"o'clock","zero","one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven","twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
+	char *digit[] = {"twenty", "thirty", "forty", "fifty"};
+
+	int h = 0;
+	int m = 0;
+	int tmp = 0;
+	scanf("%d%d", &h, &m);
+
+	if (h < 20)
+		printf("%s ", num [h + 1]);
+	else
+	{
+		printf("%s ", digit[0]);
+		tmp = h - 20;
+		if (tmp)
+			printf("%s ", num[tmp + 1]);
+
+	}
+	
+	if (m == 0)
+		printf("%s ", num[m]);
+	else if (m > 0 && m < 20)
+		printf("%s ", num[m + 1]);
+	else
+	{
+		tmp = m / 10;
+		printf("%s ", digit[tmp - 2]);
+		tmp = m % 10;
+		if (tmp == 0)
+			printf("%s", num[tmp]);
+		else
+			printf("%s", num[tmp + 1]);
+
+	}
+
+
+	system("pause");
+	return 0;
+}
