@@ -1,0 +1,29 @@
+#include<stdio.h>
+int main ()
+{
+	long long n = 0;
+	long long a = 0;
+	long long b = 0;
+	long long c = 0;
+	long long i = 0;
+	scanf("%l64d",&n);
+	scanf("%l64d%l64d%l64d",&a,&b,&c);
+	for(i = 1; i <= n; i++)//找出n以内所有不是a,b,c的倍数的数字 
+	{
+		if(i < a && i < b && i < c)
+		{
+			printf("%d ",i);
+		}
+		else
+		{
+			if(i%a == 0 || i%b == 0 || i%c == 0)
+			{
+			}
+			else
+			{
+				printf("%d ",i);
+			}
+		}
+	}
+	return 0;
+}
