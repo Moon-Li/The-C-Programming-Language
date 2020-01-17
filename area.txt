@@ -1,0 +1,43 @@
+#include<stdio.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+
+double Max(double x, double y)
+{
+	x = x > y ? x : y;
+	return x;
+}
+double Min(double x, double y)
+{
+	x = x < y ? x : y;
+	return x;
+}
+
+int main()
+{
+	double AX1 = 0;
+	double AY1 = 0;
+	double AX2 = 0;
+	double AY2 = 0;
+
+	double BX1 = 0;
+	double BY1 = 0;
+	double BX2 = 0;
+	double BY2 = 0;//可以用数组来存放，这里为了清楚单独定义
+
+	scanf("%lf%lf%lf%lf", &AX1, &AY1, &AX2, &AY2);
+	scanf("%lf%lf%lf%lf", &BX1, &BY1, &BX2, &BY2);
+
+	double min_x = Max(Min(AX1, AX2), Min(BX1, BX2));
+	double min_y = Max(Min(AY1, AY2), Min(BY1, BY2));
+	double max_x = Min(Max(AX1, AX2), Max(BX1, BX2));
+	double max_y = Min(Max(AY1, AY2), Max(BY1, BY2));
+
+	if (max_x > min_x && max_y > min_y)
+	{
+		printf("%.2f\n", (max_x - min_x)*(max_y - min_y));
+	}
+
+	system("pause");
+	return 0;
+}
