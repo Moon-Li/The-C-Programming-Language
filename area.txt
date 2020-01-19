@@ -23,7 +23,7 @@ int main()
 	double BX1 = 0;
 	double BY1 = 0;
 	double BX2 = 0;
-	double BY2 = 0;//¿ÉÒÔÓÃÊı×éÀ´´æ·Å£¬ÕâÀïÎªÁËÇå³şµ¥¶À¶¨Òå
+	double BY2 = 0;//å¯ä»¥ç”¨æ•°ç»„æ¥å­˜æ”¾ï¼Œè¿™é‡Œä¸ºäº†æ¸…æ¥šå•ç‹¬å®šä¹‰
 
 	scanf("%lf%lf%lf%lf", &AX1, &AY1, &AX2, &AY2);
 	scanf("%lf%lf%lf%lf", &BX1, &BY1, &BX2, &BY2);
@@ -37,7 +37,8 @@ int main()
 	{
 		printf("%.2f\n", (max_x - min_x)*(max_y - min_y));
 	}
-
+	else
+		printf("0.00\n");
 	system("pause");
 	return 0;
 }
