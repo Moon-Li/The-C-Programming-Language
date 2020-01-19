@@ -1,0 +1,34 @@
+#include<stdio.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+
+int main()
+{
+	int a = 0;
+	int b = 0;
+	scanf("%d%d", &a, &b);
+
+	int i = 0;
+	int j = 0;
+
+	for (i = a; i <= b; i++)
+	{
+		printf("%d=", i);//输出数字本身
+
+		int ii = i;
+
+		for (j = 2; j <= i; j++)
+		{
+			while (ii % j == 0 && ii != j)//判断是否有因子
+			{
+				printf("%d*", j);
+				ii /= j;
+			}
+			if (ii == j)//这个数本身已经是质数
+				printf("%d", j);
+		}
+		printf("\n");
+	}
+	system("pause");
+	return 0;
+}
