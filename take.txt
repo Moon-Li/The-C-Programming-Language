@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+
+int main()
+{
+	int high = 0;
+	int wide = 0;
+	int arr[200][200] = {0};
+	int i = 0;
+	int j = 0;
+
+	scanf("%d%d", &high, &wide);
+
+	for (i = 0; i < high; i++)
+	{
+		for (j = 0; j < wide; j++)
+		{
+			scanf("%d", &arr[i][j]);
+		}
+	}
+	int tmp = high * wide;
+	i = 0;
+	j = 0;
+	while (tmp)
+	{
+		while (i<high && tmp != 0) { printf("%d ", arr[i][j]); i++; tmp--; }
+		//le++;
+		while (j<wide && tmp != 0)  { printf("%d ", arr[i][j]); j++; tmp--; }
+		high--;
+		while (/*i>up &&*/ tmp != 0) { printf("%d ", arr[i][j]); i--; tmp--; }
+		wide--;
+		while (/*j>le &&*/ tmp != 0) { printf("%d ", arr[i][j]); j--; tmp--; }
+		//up++;
+	}
+
+	system("pause");
+	return 0;
+}
