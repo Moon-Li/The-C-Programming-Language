@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+
+void Out_put(char b[], int n);
+
+int main()
+{
+	int num = 0;
+	char arr[27] = { ' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', \
+		'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+
+	scanf("%d", &num);
+
+	Out_put(arr,num);
+
+	system("pause");
+	return 0;
+}
+
+//先输出前面的，再输出自己，最后输出前面的   也就是n-1 , n , n-1
+
+void Out_put(char b[], int n)
+{
+	if (n == 1)
+	{
+		printf("%c", b[1]);
+		return ;
+	}
+	Out_put(b, n - 1);
+	printf("%c", b[n]);
+	Out_put(b, n - 1);
+}
