@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+
+int main()
+{
+	char a[100] = { 0 };
+	char b[100] = { 0 };
+	int c[101] = { 0 };
+	int i = 0;
+	int j = 0;
+	int k = 0;
+	int num = 0;//临时存数
+	int digit = 0;//存进位
+
+	gets(a);
+	fflush(stdin);//清除键盘缓存区
+	gets(b);
+
+	i = strlen(a);
+	j = strlen(b);
+
+	for (k = 0; k < i || k < j; k++)
+	{
+		if (k < i)
+			c[k] += (int)a[i - k - 1] - 48;
+		if (k < j)
+			c[k] += (int)b[j - k - 1] - 48;
+		if (c[k] >= 10)
+		{
+			c[k] %= 10;
+			c[k + 1] = 1;
+		}
+	}
+
+	for (k = 100; k >= 0; k--)
+	{
+		if (c[k])
+			break;
+	}
+	for (; k >= 0; k--)
+		printf("%d", c[k]);
+	printf("\n");
+	system("pause");
+	return 0;
+}
