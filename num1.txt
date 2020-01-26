@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+
+int main()
+{
+	int n = 0;
+	int i = 0;
+	int j = 0;
+	int num = 0;
+	int count = 0;//1¸öÊı
+
+	scanf("%d", &n);
+
+	for (i = 1; i <= n; i++)
+	{
+		j = i;
+		while (j)
+		{
+			num = j % 10;
+			j /= 10;
+			if (num == 1)
+				count++;
+		}
+	}
+	printf("%d", count);
+
+	system("pause");
+	return 0;
+}
