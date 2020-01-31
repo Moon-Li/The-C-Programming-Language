@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+
+
+void Swap(int * p, int * q);
+
+int main()
+{
+	int a = 0;
+	int b = 0;
+	int * p = 0;
+	int * q = 0;
+	scanf("%d%d", &a, &b);
+	p = &a;
+	q = &b;
+	Swap(p, q);
+
+	printf("%d %d", *p, *q);
+
+
+	system("pause");
+	return 0;
+}
+void Swap(int * p, int * q)
+{
+	*p ^= *q;
+	*q ^= *p;
+	*p ^= *q;
+}
