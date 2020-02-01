@@ -1,0 +1,70 @@
+#include<stdio.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+
+void Ssort(int a[], int left, int right);//分区函数
+int swap(int a[], int left, int right);//交换函数
+
+int main()
+{
+	int n = 0;
+	int arr[1000] = { 0 };
+	int i = 0;
+	scanf("%d", &n);
+	int left = 0;
+	int right = n - 1;
+
+	for (i = 0; i < n; i++)
+	{
+		scanf("%d", &arr[i]);
+	}
+
+	Ssort(arr, left, right);
+
+	for (i = 0; i < n; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+
+	system("pause");
+	return 0;
+}
+
+void Ssort(int a[], int left, int right)//分区函数
+{
+	int min = 0;//中间坐标
+	if (left < right)
+	{
+		min = swap(a, left, right);
+		Ssort(a, left, min - 1);
+		Ssort(a, min + 1, right);
+	}
+}
+
+int swap(int a[], int left, int right)//交换函数
+{
+	int x = a[left];
+	while (left < right)
+	{
+		while (left < right && a[right] >= x)//从右向左找到一个小于x的数
+		{
+			right--;
+		}
+		if (left < right)//把这个数字放到left的位置
+		{
+			a[left] = a[right];
+			left++;
+		}
+		while (left < right && a[left] < x)//从左往右找到一个大于x的数
+		{
+			left++;
+		}
+		if (left < right)//把这个数字放到right的位置
+		{
+			a[right] = a[left];
+			right--;
+		}
+	}
+	a[left] = x;//把x放到中间位置（此时left等于right）
+	return left;//返回中间坐标
+}
