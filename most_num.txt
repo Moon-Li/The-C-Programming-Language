@@ -1,0 +1,43 @@
+#include<stdio.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+
+int main()
+{
+	int n = 0;
+	int arr[20] = { 0 };
+	int count = 1;//计出现次数
+	int max = 1;//记最大出现次数
+	int num = 0;//临时存数
+	int i = 0;
+	scanf("%d", &n);
+
+	if (n <= 0 || n > 20)//判断是否满足题意
+	{
+		return 0;
+	}
+
+	for (i = 0; i < n; i++)
+	{
+		scanf("%d", &arr[i]);
+	}
+
+	
+	num = arr[0];
+	for (i = 1; i < n; i++)
+	{
+		if (arr[i - 1] == arr[i])
+			count++;
+		else
+			count = 1;
+		if (count > max)
+		{
+			max = count;
+			num = arr[i];
+		}
+	}
+	printf("%d", num);
+
+	system("pause");
+	return 0;
+}
