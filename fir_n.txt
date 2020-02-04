@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include<math.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+int main()
+{
+	long i = 0;
+	long j = 0;
+	int n = 0;
+	long num = 5000;
+	long number = 1;
+	int flag = 0;
+	int count = 0;
+
+	scanf("%d", &n);
+	for (i = 2;; i++)
+	{
+		flag = 0;
+		if (count == n)//出口
+		{
+			printf("%d", number);
+			system("pause");
+			return 0;
+		}
+		int k = (int)sqrt(i);
+
+		for (j = 2; j <= k; j++)//判断质数
+		{
+			if (i % j == 0)
+			{
+				flag = 1;
+				break;
+			}
+		}
+		if (flag == 0)
+		{
+			number = (number * i) % 50000;
+			count++;
+		}
+	}
+	
+}
