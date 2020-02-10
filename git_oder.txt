@@ -1,0 +1,13 @@
+$ pwd显示路径
+$ git init 将所在文件夹变为仓库
+$ git add -A  //目录下所有文件添加到暂存区,修改也可用
+$ git add 文件名     //只添加本文件
+$ git commit -m  "first" //将暂存区的改动提交到本地库。“xxxx操作注记，给更改行为命名
+$ git status  //检查库的内容变动 红色表示有变动，绿色表示已添加到暂存区
+$ git log   //查看提交记录
+$ git push //上传到github
+$ git clone //下载上传的库
+
+经过探索发现好像是本地目录和远程目录不一致，
+github中的README.md文件不在本地代码目录中，可以通过如下命令进行代码合并：
+git pull --rebase origin master
