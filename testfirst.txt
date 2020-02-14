@@ -1,0 +1,40 @@
+//#include<iostream>
+//using namespace std;
+//int main ()
+//{
+//	cout <<"HelloWorld"<<endl;
+//	return 0;
+//}
+
+#include<iostream>
+#include<windows.h> 
+using namespace std;
+int main ()
+{
+	SetConsoleTitle("姓名"); 
+	
+	string name = "lilili";
+	cout << name << endl;
+	return 0;
+}
+
+
+
+//#include<iostream>
+//
+//using namespace std;//01111 1111 --> +1 --> 1000 0000 
+//int main(){			//    最大值         最小值 
+//    int i=0,min,max;
+//    while(1){
+//        if(i+1<=0)
+//		{
+//            max = i;
+//            min = i+1;
+//            break;
+//        }
+//        i++;
+//    }    
+//	cout<<"Max is "<<max<<endl;
+//    cout<<"Min is "<<min<<endl;
+//    return 0;
+//}
