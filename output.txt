@@ -1,0 +1,14 @@
+/**********************
+题目：c++入门输出练习 
+
+***********************/
+#include<iostream>
+using namespace std;
+int main() 
+{
+	cout << "英雄名称：寒冰射手"<<endl;
+	cout << "\t  伤害：56\n"
+		 << "\t  护甲：30\n"
+		 << "\t  魔抗：25" << endl; 
+	return 0;
+}
