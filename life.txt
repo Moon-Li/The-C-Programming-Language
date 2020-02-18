@@ -6,6 +6,7 @@
 *******************************************/
 #include <iostream>
 #include <iomanip>
+#include <cstdlib>
 #include <ctime>
 #include <vector>
 #include <array>
@@ -27,11 +28,11 @@ int main()
 	string daughter_constell;
 
 	//动态分配内存的数组
-	/*女儿的五项属性数值：体力、智力、魅力、道德、气质 */
-	array<int, 5> daughter_value;
-	/*女儿的五项属性名称：体力、智力、魅力、道德、气质*/
-	array<string, 5> daughter_value_name = { "体力", "智力", \
-		"魅力", "道德", "气质" };
+	/*女儿的五项属性数值：体力、智力、魅力、道德、气质 、金钱*/
+	array<int, 6> daughter_value;
+	/*女儿的五项属性名称：体力、智力、魅力、道德、气质、金钱*/
+	array<string, 6> daughter_value_name = { "体力", "智力", \
+		"魅力", "道德", "气质" ,"金钱"};
 	/*星座二位数组*/
 	string constell_name[12][2] {
 		{ "山羊座", "水瓶座" },//一月
@@ -65,62 +66,166 @@ int main()
 		<< "\t生日：2000-" << birth_month << "-" << birth_data << endl
 		<< "\t星座：" << daughter_constell << endl;
 
-	//3.根据星座设置基本参数（体力，智力，魅力，道德，气质）
+	//3.根据星座设置基本参数（体力，智力，魅力，道德，气质，金钱）
 
-	if (daughter_constell == "山羊座"){		daughter_value[0] = 80;		daughter_value[1] = 15;		daughter_value[2] = 15;		daughter_value[3] = 11;		daughter_value[4] = 21;
-	}else if (daughter_constell == "水瓶座"){		daughter_value[0] = 75;		daughter_value[1] = 15;		daughter_value[2] = 11;		daughter_value[3] = 10;		daughter_value[4] = 25;
-	}else if (daughter_constell == "双鱼座"){		daughter_value[0] = 70;		daughter_value[1] = 16;		daughter_value[2] = 13;		daughter_value[3] = 8;		daughter_value[4] = 20;
-	}else if (daughter_constell == "白羊座"){		daughter_value[0] = 65;		daughter_value[1] = 14;		daughter_value[2] = 15;		daughter_value[3] = 9;		daughter_value[4] = 23;
-	}else if (daughter_constell == "金牛座"){		daughter_value[0] = 60;		daughter_value[1] = 18;		daughter_value[2] = 17;		daughter_value[3] = 7;		daughter_value[4] = 21;
-	}else if (daughter_constell == "双子座"){		daughter_value[0] = 55;		daughter_value[1] = 19;		daughter_value[2] = 15;		daughter_value[3] = 11;		daughter_value[4] = 22;
-	}else if (daughter_constell == "巨蟹座"){		daughter_value[0] = 50;		daughter_value[1] = 20;		daughter_value[2] = 16;		daughter_value[3] = 13;		daughter_value[4] = 19;
-	}else if (daughter_constell == "狮子座"){		daughter_value[0] = 45;		daughter_value[1] = 17;		daughter_value[2] = 16;		daughter_value[3] = 11;		daughter_value[4] = 15;
-	}else if (daughter_constell == "处女座"){		daughter_value[0] = 40;		daughter_value[1] = 16;		daughter_value[2] = 15;		daughter_value[3] = 15;		daughter_value[4] = 21;
-	}else if (daughter_constell == "天秤座"){		daughter_value[0] = 35;		daughter_value[1] = 15;		daughter_value[2] = 13;		daughter_value[3] = 14;		daughter_value[4] = 16;
-	}else if (daughter_constell == "天蝎座"){		daughter_value[0] = 35;		daughter_value[1] = 12;		daughter_value[2] = 15;		daughter_value[3] = 6;		daughter_value[4] = 10;
-	}else if (daughter_constell == "射手座"){		daughter_value[0] = 35;		daughter_value[1] = 19;		daughter_value[2] = 12;		daughter_value[3] = 8;		daughter_value[4] = 17;
+	if (daughter_constell == "山羊座"){
+		daughter_value[0] = 80;		daughter_value[1] = 15;		daughter_value[2] = 15;		daughter_value[3] = 11;		daughter_value[4] = 21;		daughter_value[5] = 200;
+	}	else if (daughter_constell == "水瓶座"){
+		daughter_value[0] = 75;		daughter_value[1] = 15;		daughter_value[2] = 11;		daughter_value[3] = 10;		daughter_value[4] = 25;		daughter_value[5] = 200;
+	}	else if (daughter_constell == "双鱼座"){
+		daughter_value[0] = 70;		daughter_value[1] = 16;		daughter_value[2] = 13;		daughter_value[3] = 8;		daughter_value[4] = 20;		daughter_value[5] = 200;
+	}	else if (daughter_constell == "白羊座"){
+		daughter_value[0] = 65;		daughter_value[1] = 14;		daughter_value[2] = 15;		daughter_value[3] = 9;		daughter_value[4] = 23;		daughter_value[5] = 200;
+	}	else if (daughter_constell == "金牛座"){
+		daughter_value[0] = 60;		daughter_value[1] = 18;		daughter_value[2] = 17;		daughter_value[3] = 7;		daughter_value[4] = 21;		daughter_value[5] = 200;
+	}	else if (daughter_constell == "双子座"){
+		daughter_value[0] = 55;		daughter_value[1] = 19;		daughter_value[2] = 15;		daughter_value[3] = 11;		daughter_value[4] = 22;		daughter_value[5] = 200;
+	}	else if (daughter_constell == "巨蟹座"){
+		daughter_value[0] = 50;		daughter_value[1] = 20;		daughter_value[2] = 16;		daughter_value[3] = 13;		daughter_value[4] = 19;		daughter_value[5] = 200;
+	}	else if (daughter_constell == "狮子座"){
+		daughter_value[0] = 45;		daughter_value[1] = 17;		daughter_value[2] = 16;		daughter_value[3] = 11;		daughter_value[4] = 15;		daughter_value[5] = 200;
+	}	else if (daughter_constell == "处女座"){
+		daughter_value[0] = 40;		daughter_value[1] = 16;		daughter_value[2] = 15;		daughter_value[3] = 15;		daughter_value[4] = 21;		daughter_value[5] = 200;
+	}	else if (daughter_constell == "天秤座"){
+		daughter_value[0] = 35;		daughter_value[1] = 15;		daughter_value[2] = 13;		daughter_value[3] = 14;		daughter_value[4] = 16;		daughter_value[5] = 200;
+	}	else if (daughter_constell == "天蝎座"){
+		daughter_value[0] = 35;		daughter_value[1] = 12;		daughter_value[2] = 15;		daughter_value[3] = 6;		daughter_value[4] = 10;		daughter_value[5] = 200;
+	}	else if (daughter_constell == "射手座"){
+		daughter_value[0] = 35;		daughter_value[1] = 19;		daughter_value[2] = 12;		daughter_value[3] = 8;		daughter_value[4] = 17;		daughter_value[5] = 200;
 	}
 
-	for (int i = 0; i < 5; i++)
-	{
-		cout << daughter_value[i] << '\t';
-	}
+	int temp1, temp2, temp3, temp4, temp5;//用户输入状态
+	int flag = 0;//死亡标志
+
 	cout << endl;
 	//4.游戏大循环
 	for (int year = 2000; year <= 2003; year++)
 	{
 		for (int month = 1; month <= 12; month++)
 		{
+			//判断是否生存
+			if (daughter_value[0] <= 0)
+			{
+				flag = 1;
+				cout << "体力不支，疾病缠身，不幸早早离世！" << endl;
+				break;
+			}
 			//生日送礼
 			if (month == birth_month)
-				cout << "本月是" << daughter_name << "的生日，\
-			         只要不要送她生日礼物呀？(1、送 / 0、不送)" << endl;
-			int choose;//用户输入状态
-			cin >> choose;
-			if (choose)
-				cout << daughter_name << "收到礼物非常\
-					开心，给你了一个大大的拥抱" << endl;
+			{
+				cout << "本月是" << daughter_name << "的生日，要不要送她生日礼物呀？(1、送 / 0、不送)" << endl;
+				int choose;//用户输入状态
+				cin >> choose;
+				if (choose)
+					cout << daughter_name << "收到礼物非常开心，给你了一个大大的拥抱" << endl;
+			}
 			//显示游戏主界面
-			cout << "\n 1、查看状态\n2、安排行程\n\
-					3、亲子谈话\n4、存档" << endl;
-			int temp1;//用户输入状态
+			cout << "\n1、查看状态\n2、安排行程\n3、亲子谈话\n4、存档" << endl;
 			cin >> temp1;
 			switch (temp1)
 			{
 			case 1://显示属性状态
 				cout << "女儿信息:\n"
-					<< "\t姓名：" << daughter_name << endl
-					<< "\t生日：2000-" << birth_month << "-" << birth_data << endl
-					<< "\t星座：" << daughter_constell << endl;
-				for (int i = 0; i < 5; i++)
+					<< "姓名：" << daughter_name << endl
+					<< "生日：2000-" << birth_month << "-" << birth_data << endl
+					<< "星座：" << daughter_constell << endl;
+				cout << left;
+				for (int i = 0; i < 6; i++)
 				{
-
+					cout << daughter_value_name[i] << ":"\
+						<< setw(2) << daughter_value[i] << endl;
+				//实心方块数量
+					int num_value = daughter_value[i] / 10;
+					for (int j = 0; j < 10; j++)
+					{
+						if (j < num_value)
+							cout << "■";
+						else
+							cout << "□";
+					}
+					cout << endl;
 				}
+				month--;
+				break;
+			case 2://安排行程
+			{
+					   cout << "请选择本月计划：" << endl;
+					   cout << "1、学习武艺\n2、大学上课\n3、学习舞蹈\n4、学习书画\n5、餐厅打工" << endl;
+					   cin >> temp2;
+					   if (daughter_value[5] <= 0)
+					   {
+						   cout << "你没钱啦！只能去打工啦！" << endl;
+						   temp2 = 5;
+					   }
+					   switch (temp2)
+					   {
+					   case 1:
+						   daughter_value[0] += temp3 = rand() % 11;
+						   daughter_value[2] += temp4 = rand() % 11;
+						   daughter_value[5] -= temp5 = rand() % 51;
+						   cout << "在精武堂习武一个月\n"
+							   << "体力+" << temp3 << " 魅力+" << temp4 << " 金钱-" << temp5 << endl;
+						   break;
+					   case 2:
+						   daughter_value[1] += temp3 = rand() % 11;
+						   daughter_value[3] += temp4 = rand() % 11;
+						   daughter_value[5] -= temp5 = rand() % 51;
+						   cout << "在大学学习一个月\n"
+							   << "智力+" << temp3 << " 道德+" << temp4 << " 金钱-" << temp5 << endl;
+						   break;
+						   break;
+					   case 3:
+						   daughter_value[2] += temp3 = rand() % 11;
+						   daughter_value[4] += temp4 = rand() % 11;
+						   daughter_value[5] -= temp5 = rand() % 51;
+						   cout << "练习舞蹈一个月\n"
+							   << "魅力+" << temp3 << " 气质+" << temp4 << " 金钱-" << temp5 << endl;
+						   break;
+						   break;
+					   case 4:
+						   daughter_value[1] += temp3 = rand() % 11;
+						   daughter_value[4] += temp4 = rand() % 11;
+						   daughter_value[5] -= temp5 = rand() % 51;
+						   cout << "学习书画一个月\n"
+							   << "智力+" << temp3 << " 气质+" << temp4 << " 金钱-" << temp5 << endl;
+						   break;
+						   break;
+					   case 5:
+						   daughter_value[0] -= temp3 = rand() % 11;
+						   daughter_value[5] -= temp4 = rand() % 11;
+						   daughter_value[5] += temp5 = rand() % 51;
+						   cout << "勤奋打工一个月\n"
+							   << "体力-" << temp3 << " 魅力-" << temp4 << " 金钱+" << temp5 << endl;
+						   break;
+						   break;
+					   }
+
+			}
+				break;
+			case 3://亲子谈话
+				break;
+			case 4://存档
+				month--;
 				break;
 			}
 		}
+		if (flag)
+			break;
 	}
+	int sum = 0;
 	//5.根据各项参数，判定游戏结果
+	for (int i = 0; i < 5; i++)
+	{
+		sum += daughter_value[i];
+	}
+	if (sum >= 475)
+		cout << "最佳结果：登基成为女王大陛下" << endl;
+	else if(sum >= 450)
+		cout << "登基成为王妃" << endl;
+	else if (sum >= 380)
+		cout << "成为王国大祭司" << endl;
+	else
+		cout << "平凡度过一生" << endl;
 
 
 	
