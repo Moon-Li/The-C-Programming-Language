@@ -1,0 +1,67 @@
+/*
+高斯日记
+*/
+#include<iostream>
+using namespace std;
+
+/*判断闰年*/
+int Gudge(int n)
+{
+	if ((n % 4 == 0 && n % 100 != 0) || n % 400 == 0)
+		return 1;
+	else
+		return 0;
+}
+
+int main()
+{
+	/*记录每月天数*/
+	int month_array[13] {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	/*日记数据*/
+	int days = 0;
+	/*初始年*/
+	int year = 1777;
+	/*初始月*/
+	int month = 4;
+	/*初始天*/
+	int day = 30;
+	/*跳出标志*/
+	int flag = 0;
+	cin >> days;
+	days--;//四月三十日也算一天
+	if (days != 0)//题中4月已经过完
+	{
+		month = 5;
+		day = 1;
+	}
+	for (;; month++)
+	{
+		if (month == 13)//新一年
+		{
+			year++;
+			month = 0;
+			//判断二月天数
+			if (Gudge(year))
+				month_array[2] = 29;
+			else
+				month_array[2] = 28;
+			continue;
+		}
+		
+		if (days >= month_array[month])
+		{
+			days -= month_array[month];
+		}
+		else
+		{
+			flag = 1;
+			day = days;
+		}
+
+		if (flag)
+			break;
+	}
+	cout << "year:" << year << " month:" << month << " day:" << day << endl;
+
+	return 0;
+}
