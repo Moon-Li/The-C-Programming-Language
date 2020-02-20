@@ -23,45 +23,25 @@ int main()
 	int year = 1777;
 	/*初始月*/
 	int month = 4;
-	/*初始天*/
-	int day = 30;
-	/*跳出标志*/
-	int flag = 0;
 	cin >> days;
-	days--;//四月三十日也算一天
-	if (days != 0)//题中4月已经过完
+	days += 30;
+	days--;//出生当天也算一天
+	while (days >= month_array[month])
 	{
-		month = 5;
-		day = 1;
-	}
-	for (;; month++)
-	{
-		if (month == 13)//新一年
+		if (month == 1)//新一年
 		{
 			year++;
-			month = 0;
 			//判断二月天数
 			if (Gudge(year))
 				month_array[2] = 29;
 			else
 				month_array[2] = 28;
-			continue;
 		}
-		
-		if (days >= month_array[month])
-		{
 			days -= month_array[month];
-		}
-		else
-		{
-			flag = 1;
-			day = days;
-		}
-
-		if (flag)
-			break;
+			month++;
+			month %= 13;
 	}
-	cout << "year:" << year << " month:" << month << " day:" << day << endl;
+	cout << "year:" << year << " month:" << month << " day:" << days << endl;
 
 	return 0;
 }
