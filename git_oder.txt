@@ -10,5 +10,5 @@ $ git push //上传到github
 $ git clone //下载上传的库
 
 经过探索发现好像是本地目录和远程目录不一致，
-github中的README.md文件不在本地代码目录中，可以通过如下命令进行代码合并：
+比如以其他方式修改了github上的内容，可以通过如下命令进行代码合并（拷贝不同内容）：
 git pull --rebase origin master
