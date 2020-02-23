@@ -1,0 +1,33 @@
+void Sort (int *arr, int left, int right)
+{
+    if(left >= right)
+    return;
+    int k = right;
+    int flag = arr[left];
+    while(left < right)
+    {
+        while(left < right && arr[right] > flag)
+            right--;
+        if(left < right)
+            arr[left++] = arr[right];
+        while(left < right && arr[left] < flag)
+            left++;
+        if(left < right)
+            arr[right--] = arr[left];
+    }
+    arr[left] = flag;
+    Sort(arr, 0, left-1);
+    Sort(arr, left+1, k);
+}
+bool containsDuplicate(int* nums, int numsSize){
+    Sort(nums, 0, numsSize-1);
+    if(numsSize < 2)
+        return false;
+    int i;
+    for(i = 0; i < numsSize-1; i++)
+    {
+        if(nums[i] == nums[i+1])
+        return true;
+    }
+    return false;
+}
