@@ -1,0 +1,21 @@
+char * reverseOnlyLetters(char * S){
+    int i,j;
+    i = 0;
+    j = strlen(S)-1;
+    while(i < j)
+    {
+        while(!((S[i] >= 'A' && S[i] <= 'Z') || (S[i] >= 'a' && S[i] <= 'z')) && i < j)
+        {++i;}
+        while(!((S[j] >= 'A' && S[j] <= 'Z') || (S[j] >= 'a' && S[j] <= 'z')) && i < j)
+        {--j;}
+        if(i < j)
+        {
+            S[i] ^= S[j];
+            S[j] ^= S[i];
+            S[i] ^= S[j];
+            ++i;
+            --j;
+        }
+    }
+    return S;
+}
