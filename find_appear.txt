@@ -25,5 +25,4 @@ int* searchRange(int* nums, int numsSize, int target, int* returnSize){
     }
     arr[1] = j;
     return arr;
-
 }
