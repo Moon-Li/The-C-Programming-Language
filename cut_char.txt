@@ -1,0 +1,27 @@
+int compress(char* chars, int charsSize){
+    int i = 0;
+    int j = 0;
+    int k = 0;
+    for(i = 0; i < charsSize; j = i)
+    {
+        chars[k++] = chars[j];
+        while(i < charsSize && chars[i] == chars[j])
+        {
+            i++;
+        }
+        if(i - j == 1)
+        {
+        continue;
+        }
+        else if(i-j > 9)
+        {
+            chars[k++] = (i-j)/10+'0';
+            chars[k++] = (i-j)%10+'0';
+        }
+        else
+        {
+            chars[k++] = i-j+'0';
+        }
+    }
+    return k;
+}
