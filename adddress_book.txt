@@ -1,0 +1,14 @@
+#include<stdio.h>
+#include<windows.h>
+
+#define NAME_SIZE 15
+#define PHONE_SIZE 15
+#define ADDRESS_SIZE 20
+
+typedef struct person{
+	char name[NAME_SIZE];
+	char sex;
+	int age; 
+	char phone[PHONE_SIZE];
+	char address[ADDRESS_SIZE];
+}person_t, *person_p;
