@@ -1,0 +1,17 @@
+bool canConstruct(char * ransomNote, char * magazine){
+    int arr[26] = {0};//利用桶来存放和计数字母
+    int i = 0;
+    int len_1 = strlen(ransomNote);
+    int len_2 = strlen(magazine);
+    for(i = 0; i < len_2; i++)
+    {
+        arr[magazine[i] - 'a']++;
+    }
+    for(i = 0; i < len_1; i++)
+    {
+        arr[ransomNote[i] - 'a']--;
+        if(arr[ransomNote[i] - 'a'] < 0)
+        return false;
+    }
+    return true;
+}
