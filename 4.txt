@@ -1,0 +1,13 @@
+void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n){
+    int k = m + n - 1;
+    m -= 1;
+    n -= 1;
+    while(n >= 0 && m >= 0)//两个数组剩余元素都不为负时还有的比，任意一个为负，说明其中一个没有元素了
+    {
+        nums1[k--] = nums1[m] > nums2[n] ? nums1[m--] : nums2[n--];
+    }
+    while(n >= 0)//当n先为0时，剩余要添加的就是num1数组本身的元素，所以就不需要处理了，只有当m先为0时，需要把num2内的元素一一加入num1数组中
+    {
+        nums1[k--] = nums2[n--];
+    }
+}
