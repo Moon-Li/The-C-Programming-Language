@@ -18,6 +18,8 @@
 #define DEFAULT 1
 //空间扩容倍数
 #define FOLD 2
+//保存通讯录的文件
+#define SAVE_FILE "save.bin"
 
 //个人信息结构体类型
 typedef struct person{
@@ -44,4 +46,8 @@ void DelContact(book_p p);//删除人员信息
 void FindContact(book_p p);//查找人员
 void ClearContact(book_p p);//清空通讯录
 void SortContact(book_p p);//人员排序
+void SaveContact(book_p p);//保存通讯录
+void ChangeContact(book_p p);//修改人员信息
+
+
 #endif
