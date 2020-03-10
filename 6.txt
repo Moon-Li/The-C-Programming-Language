@@ -1,0 +1,53 @@
+char * addBinary(char * a, char * b){
+    int size_a = strlen(a)-1;
+    int size_b = strlen(b)-1;
+    char num = 0;
+    int Size = size_a > size_b ? size_a : size_b;
+    char *c = (char*)malloc(sizeof(char) * (Size+3));
+    Size++;
+    c[Size + 1] = '\0';
+    while(size_a >= 0 && size_b >= 0)
+    {
+        c[Size] = a[size_a] + b[size_b] - '0' + num;
+        if(c[Size] > '1')
+        {
+            c[Size] = '1';
+            num = 1;
+        }
+        else{
+            num = 0;
+        }
+        Size--;
+        size_a--;
+        size_b--;
+    }
+    while(size_a >= 0)
+    {
+        c[Size] = a[size_a] + num;
+        if(c[Size] > '1')
+        {
+            c[Size] = '1';
+            num = 1;
+        }
+        else{
+            num = 0;
+        }
+        Size--;
+        size_a--;
+    }
+    while(size_b >= 0)
+    {
+        c[size] = b[size_b] + num;
+        if(c[size] > '1')
+        {
+            c[size] = '1';
+            num = 1;
+        }
+        else{
+            num = 0;
+        }
+        size--;
+        size_b--;
+    }
+    return c;
+}
