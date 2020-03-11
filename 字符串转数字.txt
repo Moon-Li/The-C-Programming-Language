@@ -1,0 +1,43 @@
+int myAtoi(char * str){
+    int i = 0;
+    long num = 0;
+    int k = 0;
+    int flag = 1;
+    while(str[i] == ' ')//排除字符串前面的所有空格
+        i++;
+
+    if(str[i] == '-')//判断正负
+    {
+        flag = -1;
+        i++;
+    }
+    else if (str[i] == '+')
+    i++;
+
+
+    while(str[i] == '0')//排除无效数位，也就是前面的0
+    i++;
+
+    if(str[i] > '9' || str[i] < '1')//经过前面清理，如果此时为首的有效位不是数字，直接返回0
+            return 0;
+    k = i;//定位此时i的位置，为了防止有效位太长，存放不下，后面有解释
+    while(1)
+    {
+        if(str[i] > '9' || str[i] < '0')//遇到非数字跳出循环
+            break;
+        else
+        {
+            if(i - k > 11)//int在十进制中最大为一个十位数字，当有效位多于这个值的时候就可以停止继续加了
+            break;
+            num = 10*num + str[i] - '0';
+            i++;
+        }
+    }
+    num *= flag;//先确定正负再进行输出
+    if(num > INT_MAX)
+        return INT_MAX;
+    else if(num < INT_MIN)
+        return INT_MIN;
+
+    return num;
+}
