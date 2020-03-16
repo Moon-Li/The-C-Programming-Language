@@ -1,0 +1,22 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+
+
+struct ListNode* getKthFromEnd(struct ListNode* head, int k){
+    struct ListNode* a1 = head;
+    struct ListNode* a2 = head;
+    for(; k > 0; k--)
+    {
+        a1 = a1->next;
+    } 
+    while(a1){
+        a1 = a1->next;
+        a2 = a2->next;
+    }
+    return a2;
+}
