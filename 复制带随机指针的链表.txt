@@ -1,0 +1,56 @@
+/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    Node* next;
+    Node* random;
+    
+    Node(int _val) {
+        val = _val;
+        next = NULL;
+        random = NULL;
+    }
+};
+*/
+class Solution {
+public:
+    Node* copyRandomList(Node* head) {
+        if(head == NULL)
+            return NULL;
+        Node* cur = head;
+        //1、复制每一个节点，并排在其后
+        while(cur){
+            Node* NewNode = (Node*)malloc(sizeof(Node));
+            Node* Next = cur->next;
+            NewNode->val = cur->val;
+            cur->next = NewNode;
+            NewNode->next = Next;
+            NewNode->random = NULL;
+            cur = NewNode->next;
+        }
+        cur = head;
+        //2、对random进行赋值
+        while(cur){
+            Node* Next = cur->next;
+            if(cur->random)//切记判空，如果为空就不能进行cur->random->next访问了
+                Next->random = cur->random->next;
+            cur = Next->next;
+        }
+
+        cur = head;
+        //3、对拷贝完成的链表进行分割，分成原始链表和新拷贝的链表
+        Node* NewHead = cur->next;
+        while(cur){
+            Node* Next = cur->next;
+            cur->next = Next->next;
+            if(cur->next)//判空
+                Next->next = cur->next->next;
+            else
+                Next->next = NULL;
+            cur = cur->next;
+        }
+        return NewHead;
+
+    }
+};
