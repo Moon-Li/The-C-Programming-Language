@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><!--在 HTML 中，xmlns 属性是无效的。-->
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<!--<meta> 标签提供了 HTML 文档的元数据。元数据不会显示在客户端，但是会被浏览器解析。-->    
+<title>用户注册</title><!--鼠标移到时会显示提示文本-->
+    <style type="text/css">
+        .registerStyle {           /* 定义了一个类选择器*/
+            padding-left:60px; /* 定义了一个类选择器*/
+            border:1px solid #aaaaaa;
+            width:380px;
+            height:200px;
+            border-radius:10px;
+        }
+    </style>
+</head>
+<body>
+    <header style="padding-left:130px">
+        <h2>BookShop会员注册</h2>
+    </header>
+    <form action="UserRegister.html" method="post">
+        <div class="registerStyle">
+            <table style="padding-top:10px;">
+                <tr><td>用户名：</td>
+                   <td><input name="username" type="text"/></td> </tr>
+                <tr> <td>密码：</td>
+                    <td><input name="password" type="password"/></td></tr>
+                <tr><td>确认密码：</td>
+                    <td><input name="passwordConfirm" type="password"/></td></tr>
+                <tr> <td>邮箱：</td>
+                    <td><input name="email" type="text"/>@
+                        <select>
+                            <option value="gmail">gmail.com</option>
+                            <option value="qq">qq.com</option>
+                            <option value="163">163.com</option>
+                        </select>
+                    </td></tr>                
+                <tr><td>联系电话：</td>
+                   <td><input name="contact" type="number"/></td></tr>                
+<tr><td>性别：</td>
+                    <td><input type="radio" name="r1" checked />男
+                        <input type="radio" name="r1"/>女
+                    </td></tr>                
+                <tr> <td>兴趣爱好：</td>
+                    <td> <input type="checkbox" name="history" />历史
+                        <input type="checkbox" name="computer"/>计算机
+                        <input type="checkbox" name="finance"/>金融
+                    </td></tr>               
+            </table>
+            <div style="padding-left:100px;padding-top:15px;">
+                <input name="register" type="button" value="注册"/>
+                <input name="cancel" type="button" value="取消"/>
+            </div>
+       </div>
+    </form>
+</body>
+</html>
