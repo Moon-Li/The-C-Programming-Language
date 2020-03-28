@@ -1,0 +1,8 @@
+echo -e '\xe'  #变成乱码
+echo -e '\xf'  #恢复
+'tab'键，补全命令  
+alias 定义别名   alias 新的='原始'
+ctrl+r  历史命令
+ctrl+a 行头
+ctrl+e 行尾
+cd~ 回到根目录
