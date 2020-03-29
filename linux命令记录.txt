@@ -6,3 +6,5 @@ ctrl+r  历史命令
 ctrl+a 行头
 ctrl+e 行尾
 cd~ 回到根目录
+cp 复制命令
+
