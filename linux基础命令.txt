@@ -13,6 +13,23 @@ cd：
 	切换目录/路径
 	用法：
 		cd[path]:
+		cd[绝对路径]
+			绝对路径：从根目录开始计算到某一个文件夹所经历的路径
+		cd[相对路径]
+			相对路径：从.或者..开始计算到某一个文件夹所经历的路径
+		cd ~：直接切换到家目录
+		cd ：直接切换到家目录
+		cd /：直接切换到当前操作系统的根目录
+		cd -：切换到上一次所在的目录
+touch：
+	创建文件的命令
+	touck [filename]
+	touch [filename] [filename] [filename] [filename] [filename] 
+mkdir：
+	创建文件夹的命令
+		mkdir [foldername]
+	创建多级目录
+		mkdir -p a/b/c/d/e 
 
 echo -e '\xe'  #变成乱码
 echo -e '\xf'  #恢复
