@@ -30,6 +30,30 @@ mkdir：
 		mkdir [foldername]
 	创建多级目录
 		mkdir -p a/b/c/d/e 
+echo
+	可以使用重定向符号将字符或者字符串重定向到文件当中去
+	重定向符号 >
+cat
+	可以查看文件当中的内容
+	cat [filename]
+	cat -n [filename]     带行号显示 -n
+rm(remove)
+	可以删除文件或者文件夹
+	1.删除普通文件
+		rm[filename]
+	2.删除文件夹
+		rm -rf(强制) [foldername]
+		rm -rf * ==>re -r./* 删除当前目录下所有的文件或者文件夹
+		rm -rf / ==>删除根目录出发的所有文件或者文件夹（完全杜绝！）
+history
+	查看历史上都使用过哪些命令
+	！[命令序号]：可以重复去执行上一个命令
+	！[上一次的命令名称]：可以重复执行上一个命令
+命令补全
+	使用tab键进行命令补全
+	ctrl+c可以中断当中命令的输入
+
+
 
 echo -e '\xe'  #变成乱码
 echo -e '\xf'  #恢复
