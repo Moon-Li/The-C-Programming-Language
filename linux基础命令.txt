@@ -52,6 +52,19 @@ history
 命令补全
 	使用tab键进行命令补全
 	ctrl+c可以中断当中命令的输入
+cp
+	拷贝文件或者文件夹的作用
+	1.拷贝普通文件
+		cp([绝对路径] / [绝对路径]) / [src_filename][path]
+		eg:
+		     cp ~/a.c .
+		     cp a.c ..
+	2.拷贝文件夹
+		cp -r ([相对路径] / [相对路径]) / [src_foldername][path]
+	3.拷贝文件的时候同时可以完成重命名工作
+		cp ([相对路径] / [相对路径]) / [src_filename][path] / [new_filename]
+		cp ([相对路径] / [相对路径]) / [src_foldname][path] / [new_foldname]
+		     
 
 
 
