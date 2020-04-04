@@ -65,7 +65,14 @@ cp
 		cp ([相对路径] / [相对路径]) / [src_filename][path] / [new_filename]
 		cp ([相对路径] / [相对路径]) / [src_foldname][path] / [new_foldname]
 		     
-
+mv
+	1.移动文件或者文件夹
+		mv ([path]) / [filename] [path]
+		mv ([path]) / [filename] [path]
+	2.重命名文件或者文件夹
+		mv [src_filename / src_foldername] [dest_filename / src_foldername]
+tar
+	
 
 
 echo -e '\xe'  #变成乱码
