@@ -1,0 +1,40 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int Getnum(struct TreeNode* rt)//计算节点数
+{
+    if(rt == NULL)
+        return 0;
+    return Getnum(rt->left) + Getnum(rt->right) + 1;
+}
+
+void Preoder(struct TreeNode* rt, int* arr, int* tmp)//存放节点值
+{
+    if(rt)
+    {
+        arr[*tmp] = rt->val;
+        (*tmp)++;
+        Preoder(rt->left, arr, tmp);
+        Preoder(rt->right, arr, tmp);
+    }
+}
+
+int* preorderTraversal(struct TreeNode* root, int* returnSize){
+    int num = 0;
+    num = Getnum(root);
+    int* arr = (int*)malloc(sizeof(int) * num);
+    int tmp = 0;
+    Preoder(root, arr, &tmp);
+    *returnSize = num;
+    return arr;
+}
