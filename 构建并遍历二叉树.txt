@@ -1,0 +1,44 @@
+#include<stdio.h>
+#include<malloc.h>
+
+typedef struct Node {
+    char _data;
+    struct Node* _left;
+    struct Node* _right;
+}Node;
+
+Node* CreatTree(char* array, int* pi)
+{
+    if(array[*pi] != '#')
+    {
+        Node* root = (Node*)malloc(sizeof(Node));
+        root->_data = array[*pi];
+        (*pi)++;
+        root->_left = CreatTree(array, pi);
+        (*pi)++;
+        root->_right = CreatTree(array, pi);
+        return root;
+    }
+    return NULL;
+}
+
+void GetTree(Node* rt)
+{
+    if(rt)
+    {
+        GetTree(rt->_left);
+        printf("%c ", rt->_data);
+        GetTree(rt->_right);
+    }
+}
+
+int main()
+{
+    char array[101];
+    int idx = 0;
+    scanf("%s",array);
+    Node* root = CreatTree(array, &idx);
+    GetTree(root);
+    printf("\n");
+    return 0;
+}
