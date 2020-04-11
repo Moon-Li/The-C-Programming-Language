@@ -72,7 +72,8 @@ mv
 	2.重命名文件或者文件夹
 		mv [src_filename / src_foldername] [dest_filename / src_foldername]
 tar
-	
+	a.gzip(文件或者文件夹)
+		压缩：
 
 
 echo -e '\xe'  #变成乱码
