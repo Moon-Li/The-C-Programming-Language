@@ -1,0 +1,61 @@
+//向下调整
+void shiftDown(int* arr, int size, int parent)
+{
+	int child = 2 * parent + 1;
+	while (child < size)
+	{
+		if (child + 1 < size && arr[child + 1] > arr[child])
+			child++;
+		if (arr[child] > arr[parent])
+		{
+			Swap(&(arr[child]), &(arr[parent]));
+			parent = child;
+			child = 2 * parent + 1;
+		}
+		else 
+		{
+			break;
+		}
+
+	}
+}
+//堆排序
+void SortHeap(int* arr, int size)
+{
+	int end = size - 1;
+	int i = (size - 2) / 2;
+	//建大堆
+	for (; i >= 0; i--)
+	{
+		shiftDown(arr, size, i);
+	}
+	//较大元素后置
+	while (end > 0)
+	{
+		Swap(&(arr[0]), &(arr[end]));
+		shiftDown(arr, end, 0);
+		end--;
+	}
+}
+//交换
+void Swap(int* a, int* b)
+{
+	int tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+int main()
+{
+	int arr[] = { -10, 4, 23, 1, 78, -4, 123, 6, 27, 35 };
+	int i = 0;
+	int size = sizeof(arr) / sizeof(arr[0]);
+	SortHeap(arr, size);
+	for (i = 0; i < size; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+	system("pause");
+	return 0;
+}
