@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+
+
+int Queue(int m, int n)
+{
+	if (n == 0)//无人借鞋说明所有人的需求都已经得到满足了，符合条件
+		return 1;
+	if (n > m)//如果借鞋的人比还鞋的人多，那么无论如何都无法满足
+		return 0;
+	return Queue(m - 1, n) + Queue(m, n - 1);//每次一个人还鞋，或者一个人借鞋，遍历所有可能性
+}
+
+int main()
+{
+	int m = 0;//还鞋人数
+	int n = 0;//借鞋人数
+	scanf("%d%d", &m, &n);
+	int num = Queue(m, n);
+	printf("%d", num);
+	system("pause");
+	return 0;
+}
