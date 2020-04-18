@@ -1,0 +1,27 @@
+#include<stdio.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+
+int main()
+{
+	int n = 0;
+	int a = 0;
+	int b = 0;
+	int c = 0;
+	scanf("%d", &n);
+	scanf("%d%d%d", &a, &b, &c);
+	//优化，找出最小数，小于这个数的都不是他的整倍数
+	int k = a < b ? a : b;
+	k = k < c ? k : c;
+	int i = 0;
+	int count = k - 1;
+	for (i = k+1; i <= n; i++)
+	{
+		if (i % a != 0 && i % b != 0 && i % c != 0)
+			count++;
+	}
+	printf("%d", count);
+
+	system("pause");
+	return 0;
+}
