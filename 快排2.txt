@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include<windows.h>
+#pragma warning (disable:4996)
+
+void quickSort(char *arr, int left, int right)
+{
+	if (left >= right)
+		return;
+	int L = left;
+	int R = right;
+	char key = arr[left];
+	while (L < R)
+	{
+		while (L < R && arr[R] > key)
+			R--;
+		if (L < R)
+		{
+			arr[L] = arr[R];
+			L++;
+		}
+		while (L < R && arr[L] < key)
+			L++;
+		if (L < R)
+		{
+			arr[R] = arr[L];
+			R--;
+		}
+	}
+	arr[L] = key;
+	quickSort(arr, left, L - 1);
+	quickSort(arr, L + 1, right);
+}
+
+void outPut(char *arr, int n)
+{
+	int i = 0;
+	for (i = 0; i < n; i++)
+	{
+		printf("%c", arr[i]);
+	}
+}
+
+int main()
+{
+	char arr[21] = { 0 };
+	scanf("%s", &arr);
+	int size = strlen(arr);
+	quickSort(arr, 0, size);
+	outPut(arr, size);
+	system("pause");
+	return 0;
+}
