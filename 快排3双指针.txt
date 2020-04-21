@@ -2,7 +2,6 @@
 #include<windows.h>
 #pragma warning (disable:4996)
 
-
 void Swap(int *a, int *b)
 {
 	int tmp = *a;
@@ -31,7 +30,6 @@ void quickSort3(int * arr, int left, int right)
 	Swap(&arr[left], &arr[prev]);
 	quickSort3(arr, left, prev - 1);
 	quickSort3(arr, prev + 1, right);
-
 }
 
 void outPut(int *arr, int n)
@@ -47,8 +45,6 @@ int main()
 {
 	int arr[10] = { 0, -5, 123, 176, -34, 1, 563, 12, 1985,-346 };
 	int size = sizeof(arr) / sizeof(arr[0]);
-	//quickSort(arr, 0, size);
-	//outPut(arr, size);
 	quickSort3(arr, 0, size-1);
 	outPut(arr, size);
 	system("pause");
