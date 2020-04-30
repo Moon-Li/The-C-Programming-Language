@@ -1,0 +1,22 @@
+void tets2()
+{
+	int n = 0;
+	cin >> n;
+
+	int* arr = (int*)malloc(sizeof(int)* n * 3);
+	for (int i = 0; i < 3*n; i++)
+	{
+		cin >> arr[i];
+	}
+
+	sort(arr, arr + n*3);
+
+	int num = 0;
+
+	for (int i = n; i < 3 * n; i += 2)
+	{
+		num += arr[i];
+	}
+
+	cout << num << endl;
+}
