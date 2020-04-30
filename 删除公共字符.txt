@@ -1,0 +1,48 @@
+int test1()
+{
+	string s1;
+	getline(cin, s1);
+	string s2;
+	getline(cin, s2);
+
+	char arr[57] = { 0 };
+
+	for (auto h : s2)
+	{
+		arr[h - 65] = 1;
+	}
+
+	string::iterator begin = s1.begin();
+	string::iterator end = s1.begin();
+
+	for (auto h : s1)
+	{
+		*begin = *end;
+		if (arr[h - 65] == 0)
+		{
+			begin++;
+		}
+		if (end != s1.end())
+			end++;
+	}
+	*begin = '\0';
+
+	//cout << s1 << endl;
+	//printf("%s", s1.begin());
+
+	for (auto h : s1)
+	{
+		if (h == '\0')
+			break;
+		cout << h;
+	}
+
+
+	return 0;
+}
+
+
+int compare(const void* d1, const void* d2)
+{
+	return (*(int*)d1 - *(int*)d2);
+}
