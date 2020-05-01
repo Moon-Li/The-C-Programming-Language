@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+#include<iostream>
+using namespace std;
+
+//查找输入整数的二进制中1的个数
+int findNumberOf1(int num)
+{
+	////方法一：平行算法
+	//num = (num & 0x55555555) + ((num >> 1) & 0x55555555);
+	//num = (num & 0x33333333) + ((num >> 2) & 0x33333333);
+	//num = (num & 0x0f0f0f0f) + ((num >> 4) & 0x0f0f0f0f);
+	//num = (num & 0xff00ff) + ((num >> 8) & 0xff00ff);
+	//num = (num & 0xffff) + ((num >> 16) & 0xffff);
+	//return num;
+
+	
+	//方法二：按位
+	int count = 0;
+	while(num)
+	{
+	if(num & 1)
+	{
+		cout << (num & 1) << "-";
+	count++;
+	}
+	num >>= 1;
+	}
+	return count;
+}
+
+int main()
+{
+	int num;
+	while (cin >> num)
+	{
+		cout << findNumberOf1(num) << endl;
+	}
+
+	return 0;
+}
