@@ -1,0 +1,57 @@
+#include<iostream>
+#include<string>
+
+using namespace std;
+void test1()//倒置字符串单词
+{
+	string s1;
+	string s2;
+	getline(cin, s1);
+
+	if (!s1.empty())
+	{
+		string::iterator begin = s1.begin();
+		string::iterator end = s1.end() - 1;
+
+		int check = 0;
+
+		while (begin != end)
+		{
+			auto tmp = end;
+			auto flag = end;
+			while (tmp != begin && *tmp != ' ')
+				tmp--;
+
+			if (tmp != begin)
+			{
+				flag = tmp - 1;//上一个单词的最后一个字母位置
+				if (flag == begin)//恰巧上一个单词的最后一个字母就是字符串开头，进行单独处理
+					check = 1;
+				tmp++;//单词的首字母位置
+			}
+			else
+				flag = begin;
+
+			while (tmp != end + 1)
+			{
+				s2 += *tmp;
+				tmp++;
+			}
+			//cout << s2 << endl;
+
+			if (flag >= begin)
+			{
+				s2 += ' ';
+				end = flag;
+			}
+		}
+		if (check)
+			s2 += *begin;
+	}
+	
+
+	cout << s2 << endl;
+
+
+
+}
