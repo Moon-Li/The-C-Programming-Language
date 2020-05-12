@@ -1,0 +1,59 @@
+//扑克牌大小
+
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+
+int main()
+{
+	string Str;
+
+	while (getline(cin, Str))
+	{
+		if (Str.find("joker JOKER") != -1)//找到了王炸，那么它必定是最大的牌
+			cout << "joker JOKER" << endl;
+
+		else{
+			int mid = Str.find("-");//找到两手牌的分界处
+
+			string strL = Str.substr(0, mid);//记录第一手牌
+			string strR = Str.substr(mid + 1);//记录第二手牌
+
+			int countL = count(strL.begin(), strL.end(), ' ');//统计两手牌的个数（这里统计的比实际牌数少1）
+			int countR = count(strR.begin(), strR.end(), ' ');
+
+			string headL = strL.substr(0, strL.find(' '));//找到第一张牌，且按题设，拿到的也必定是最小的牌
+			string headR = strR.substr(0, strR.find(' '));
+
+			string home = "345678910JQKA2jokerJOKER";//按大小顺序排列所有可能出现的牌
+
+			if (countL == countR)//当牌数相等时
+			{
+				//在home中找到两手牌的第一张牌的位置坐标，坐标的大小关系就是这手牌的大小关系
+				if (home.find(headL) > home.find(headR))
+					cout << strL << endl;
+				else
+					cout << strR << endl;
+			}
+			else{
+				//当其中一个为炸弹时，则它大
+				if (countL == 3)
+				{
+					cout << strL << endl;
+				}
+				else if (countR == 3)
+				{
+					cout << strR << endl;
+				}
+				//牌数不匹配，且非炸，出牌不合规矩
+				else{
+					cout << "ERROR" << endl;
+				}
+			}
+		}
+	}
+
+	return 0;
+}
