@@ -1,0 +1,50 @@
+#include<iostream>
+
+using namespace std;
+
+void OutDay()//判断是这一年的第几天
+{
+	int year = 0;
+	int month = 0;
+	int day = 0;
+	int arr[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+
+	cout << "请输入年" << endl;
+	cin >> year;
+	cout << "请输入月" << endl;
+	cin >> month;
+	cout << "请输入天" << endl;
+	cin >> day;
+
+	if (year < 0)
+		return;
+
+	if (month > 12 || month < 1)
+		return;
+
+	if ((year % 400 == 0) || (year % 100 != 0 && year % 4 == 0))
+	{
+		arr[2] = 29;
+	}
+
+	if (day > arr[month] || day < 1)
+		return;
+
+	int num = day;
+	int i = month - 1;
+	for (;  i > 0; i--)
+	{
+		num += arr[i];
+	}
+
+	cout << num << endl;
+}
+
+int main()
+{
+	OutDay();
+
+
+	return 0;
+}
