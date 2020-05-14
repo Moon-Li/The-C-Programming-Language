@@ -1,0 +1,65 @@
+#include<iostream>
+#include<algorithm>
+#include<vector>
+
+using namespace std;
+
+
+//幸运的袋子
+
+int Check(vector<int> arr, int n, int tmp, int sum, int mul)
+{
+	int count = 0;
+	int i = tmp;//初始位置
+	
+	for (; i < n; i++)
+	{
+
+		//先加和、乘积，用于后面判断
+		sum += arr[i];
+		mul *= arr[i];
+		if (i == 0 && sum == arr[0])
+			Check(arr, n, i + 1, sum, mul);//只有一个元素时，不可能满足条件
+
+		else
+		{
+			if (sum > mul)//和大于积时，满足条件
+			{
+				count += 1 + Check(arr, n, i + 1, sum, mul);//递归，判断后续的数是否可以继续组成满足条件的组合
+			}
+
+			else
+				break;//如果不满足条件，那么后面的数必定不符合条件
+
+			sum -= arr[i];//去除当前数，继续尝试后面的数
+			mul /= arr[i];
+
+			//相同号码无区别，就意味着，第一个1号球和第二个1号球是没有区别的，
+			//那么在单独使用过第一个1号球后，就不可以再单独使用第二个1号球了，
+			//多个同号组合可以正常进行
+			while (i < n - 1 && arr[i] == arr[i + 1])
+				i++;
+		}
+
+	}
+
+	return count;
+}
+
+int main()
+{
+	int n = 0;
+	while (cin >> n)
+	{
+
+		vector<int> arr(n);
+		for (auto& a : arr)
+			cin >> a;
+
+		sort(arr.begin(), arr.end());//对输入的小球进行升序排序
+
+		cout << Check(arr, n, 0, 0, 1) << endl;//(n为元素个数，0为当前位置，0为加和初值，1为乘积mul初始值)
+
+	}
+	return 0;
+}
