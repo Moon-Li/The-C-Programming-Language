@@ -1,0 +1,52 @@
+#include<iostream>
+#include<algorithm>
+
+using namespace std;
+
+//输出n以内，个位为1的素数
+void outPut(int n)
+{
+	int i;
+	int count = 0;
+	int tmp = 0;
+	int k = 10;
+	while (k <= n)
+	{
+		int flag = 0;
+		for (i = 2; i <= sqrt(k); i++)
+		{
+			if (k % i == 0)
+				flag = 1;
+		}
+		if (!flag)
+		{
+			if ((k % 10) == 1 && k != n)//切记排除和自身相等的值
+			{
+				count++;
+				if (count == 1)
+					cout << k;
+				else
+					cout << " " << k;
+				tmp = 1;
+			}
+		}
+		k++;
+	}
+	if (tmp == 0)
+		cout << -1;
+	cout << endl;
+}
+
+
+int maain()
+{
+	int n;
+
+	while (cin >> n)
+	{
+		outPut(n);
+	}
+
+
+	return 0;
+}
