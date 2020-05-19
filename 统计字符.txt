@@ -1,0 +1,25 @@
+#include<iostream>
+#include<vector>
+#include<string>
+
+using namespace std;
+
+int main()
+{
+	string s1;
+
+	while (cin >> s1)
+	{
+		vector<char> str(58);
+
+		for (auto a : s1)
+		{
+			if (str[a - 65] == 0)
+				cout << a;
+			str[a - 65] = 1;
+		}
+		cout << endl;
+	}
+
+	return 0;
+}
