@@ -1,0 +1,37 @@
+int test1()//联系人列表
+{
+
+	//Check();
+
+	int n = 0;
+
+	while (cin >> n)
+	{
+		string Instr;
+		string Outstr;
+
+		getchar();
+		while (n--)
+		{
+			//fflush(stdin);
+			getline(cin, Instr);
+
+			if (Instr.find(' ') != -1 || Instr.find(',') != -1)
+			{
+				Instr.insert(Instr.begin(), '"');
+				Instr.insert(Instr.end(), '"');
+			}
+			if (n)
+			{
+				Instr.insert(Instr.end(), ',');
+				Instr.insert(Instr.end(), ' ');
+			}
+			Outstr += Instr;
+		}
+
+		cout << Outstr << endl;
+
+	}
+
+	return 0;
+}
