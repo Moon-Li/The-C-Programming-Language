@@ -1,0 +1,27 @@
+void test2()//字符串编码
+{
+	string s;
+	/*
+	每个单独字母之间都相差 25 + 25*25 + 25*25*25 个字母 
+	*/
+	while (cin >> s)
+	{
+		int size = s.size();
+		int sum = 0;
+
+		for (int i = 0; i < size; i++)
+		{
+			int num = s[i] - 'a';
+
+			for (int j = 0; j < 4 - i; j++)
+			{
+				sum += num * (int)pow(25, j);//为首位时就是25的0次方 + 25的一次方 + 25的平方 + 25的三次方
+
+			}
+		}
+		cout << sum << endl;
+
+	}
+
+
+}
