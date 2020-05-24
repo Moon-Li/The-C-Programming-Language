@@ -1,0 +1,30 @@
+int mainn()//最大序列和
+{
+	int n = 0;
+
+	while (cin >> n)
+	{
+		vector<int> arr(n);
+		for (auto& a : arr)
+		{
+			cin >> a;
+		}
+		
+		int i = 0;
+		int tmp = 0;
+		int max = 1 << 31;
+
+		for (; i < n; i++)
+		{
+			tmp += arr[i];
+			if (tmp > max)
+				max = tmp;
+			if (tmp < 0)
+				tmp = 0;
+		}
+		cout << max << endl;
+	}
+
+
+	return 0;
+}
