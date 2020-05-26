@@ -1,0 +1,32 @@
+#include<iostream>
+#include<string>
+#include<vector>
+#include<algorithm>
+using namespace std;
+
+int main1()//排除字符串
+{
+	string s1;
+	string s2;
+	while (getline(cin, s1) && getline(cin, s2))
+	{
+		for (auto& a : s2)
+		{
+			string::iterator begin = s1.begin();
+			while (begin < s1.end())
+			{
+				if (a == *begin)
+				{
+					s1.erase(begin);
+				}
+				else
+				{
+					begin++;
+				}
+			}
+		}
+		cout << s1 << endl;
+	}
+
+	return 0;
+}
