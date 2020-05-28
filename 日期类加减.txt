@@ -1,0 +1,354 @@
+#include<iostream>
+using namespace std;
+
+class A
+{
+public:
+	A(int a = 0, int b = 0)
+	{
+		_a = a;
+		_b = b;
+	}
+	int _a;
+	int _b;
+};
+//运算符重载		
+//.*（成员访问） 、 ::（作用域限定符） 、 sizeof 、 ?: （三目运算符）、 . 、这五个运算符不能重载
+A operator + (A& a1, A& a2)  
+{
+	int a = a1._a + a2._a;
+	int b = a1._b + a2._b;
+	A obj = A(a, b);
+	return obj;
+}
+
+int operator == (A& a, A& b)
+{
+	return a._a == b._a && a._b == b._b;
+}
+
+class B
+{
+public:
+	B(int a = 10)
+	{
+		_array = (int*)malloc(sizeof(int)* a);
+	}
+	~B()
+	{
+		free(_array);
+		_array = nullptr;
+	}
+
+
+
+private:
+	int* _array;
+};
+
+class Date
+{
+public:
+	Date(int year = 1, int month = 1, int day = 1)
+	{
+		//判断参数是否有效
+		if (year <= 0
+			|| month <= 0
+			|| month > 12
+			|| day <= 0
+			|| day > getMonthDay(year, month))
+		{
+			cout << "非法日期！" << endl;
+			_year = _month = _day = 1;
+			cout << "日期重置为：1-1-1" << endl; 
+		}
+		else
+		{
+			_year = year;
+			_month = month;
+			_day = day;
+		}
+	}
+
+	/*Date(const Date& date);
+	
+	Date& operator=(const Date& date);
+
+	~Date();*/
+
+	int getMonthDay(int year, int month)
+	{
+		static int arr[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+		int day = arr[month];
+		if (month == 2
+			&& ((year % 4 == 0 && year % 100 != 0) && (year % 400 == 0)))
+			day += 1;
+
+		return day;
+	}
+
+	Date& operator+=(int day)
+	{
+		//判断负值
+		if (day < 0)
+			return *this -= -_day;
+
+		_day += day;
+		//判断天数是否超出当前月份天数
+		while (_day > getMonthDay(_year, _month))
+		{
+			_day -= getMonthDay(_year, _month);
+			_month++;
+			if (_month == 13)
+			{
+				_month = 1;
+				_year++;
+			}
+		}
+
+		return *this;
+	}
+
+	Date& operator-=(int day)
+	{
+		//判断负值
+		if (day < 0)
+			return *this += -_day;
+
+		day -= _day;
+		//判断天数是否超出当前月份天数
+		while (day > 0)
+		{
+			day -= getMonthDay(_year, _month-1);
+			_month--;
+			if (_month == 0)
+			{
+				_month = 12;
+				_year--;
+			}
+		}
+		_day = -day;
+		return *this;
+	}
+
+	//前置自加
+	Date& operator++()
+	{
+		return *this += 1;
+	}
+
+	//后置自加
+	Date operator++(int)
+	{
+		Date dat(*this);
+		*this += 1;
+		return dat;
+	}
+
+	//前置自减
+	Date& operator--()
+	{
+		return *this -= 1;
+	}
+
+	//后置自减
+	Date operator--(int)
+	{
+		Date dat(*this);
+		*this -= 1;
+		return dat;
+	}
+
+	Date operator+(int date)
+	{
+		Date dat(*this);
+		dat += date;
+		return dat;
+	}
+
+	Date operator-(int date)
+	{
+		Date dat(*this);
+		dat -= date;
+		return dat;
+	}
+
+	//日期比较
+	bool operator>(const Date& date)
+	{
+		if (_year > date._year)
+			return true;
+		else if (_year == date._year)
+		{
+			if (_month > date._month)
+				return true;
+			else if (_month == date._month)
+			{
+				if (_day > date._day)
+					return true;
+				else
+					return false;
+			}
+			else
+				return false;
+		}
+		else
+			return false;
+	}
+
+	bool operator<(const Date& date)
+	{
+		if (_year < date._year)
+			return true;
+		else if (_year == date._year)
+		{
+			if (_month < date._month)
+				return true;
+			else if (_month == date._month)
+			{
+				if (_day < date._day)
+					return true;
+				else
+					return false;
+			}
+			else
+				return false;
+		}
+		else
+			return false;
+	}
+
+	bool operator==(const Date& date)
+	{
+		return _year == date._year
+			&& _month == date._month
+			&& _day == date._day;
+	}
+
+	bool operator>=(const Date& date)
+	{
+		return *this > date || *this == date;
+	}
+
+	bool operator<=(const Date& date)
+	{
+		return *this < date || *this == date;
+	}
+
+	bool operator!=(const Date& date)
+	{
+		return *this > date || *this < date;
+
+	}
+
+	int operator-(Date date)
+	{
+		if (*this > date)
+		{
+			int num = 0;
+			while (*this != date)
+			{
+				++date;
+				++num;
+			}
+			return num;
+		}
+		else if (*this < date)
+		{
+			int num = 0;
+			while (*this != date)
+			{
+				--date;
+				++num;
+			}
+			return num;
+		}
+		else
+			return 0;
+	}
+
+	void Print()
+	{
+		cout << _year << "-" << _month << "-" << _day << endl;
+	}
+
+private:
+	int _year;
+	int _month;
+	int _day;
+};
+
+void test1()
+{
+	A a1;
+	A a2;
+	A a3;
+
+	a1._a = 1;
+	a1._b = 2;
+	a2._a = 3;
+	a2._b = 4;
+	a3 = operator+(a1, a2);
+	a3 = a1 + a2;
+
+	int num = 0;
+	num = a1._a + a2._a;
+
+	int c = a1 == a2;
+}
+
+
+void test2()
+{
+	B b1;
+	B b2;
+	//编译器默认生成的赋值运算符是一个浅拷贝
+	b2 = b1;
+}
+
+
+void test3()
+{
+	Date d1(2020, 5, 5);
+	d1.Print();
+	Date d2(2020, 5, 32);
+	d2.Print();
+	Date d3(2020, 14, 2);
+	d3.Print();
+	Date d4(2020, 12, 2);
+	d4.Print();
+	d1 += 365;
+	d1.Print();
+	d1 -= 3;
+	d1.Print();
+	++d1;
+	d1.Print();
+
+	(++d1).Print();
+	(d1++).Print();
+	d1.Print();
+	int flag = d4 > d1;
+	cout << "flag: " << flag << endl;
+
+	Date d5 = d1 + 2;
+	d1.Print();
+	d5.Print();
+
+	Date d6(2020, 5, 5);
+	d6.Print();
+	Date d7(2020, 5, 30);
+	d7.Print();
+	int k = d7 - d6;
+	cout << "K: " << k << endl;
+
+}
+
+int main()
+{
+	//test1();
+	//test2();
+	test3();
+
+	getchar();
+	return 0;
+}
