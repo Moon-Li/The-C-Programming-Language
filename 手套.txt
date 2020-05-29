@@ -1,0 +1,57 @@
+#include<iostream>
+#include<algorithm>
+#include<vector>
+using namespace std;
+
+class Gloves {
+public:
+	int findMinimum(int n, vector<int> left, vector<int> right) {
+		int i = 0;
+		int count = 0;
+		int left_sum = 0;
+		int right_sum = 0;
+		int left_min = INT_MAX;
+		int right_min = INT_MAX;
+		for (i = 0; i < n; i++)
+		{
+			if (left[i] == 0 || right[i] == 0)//当有一种颜色手套其中一只手数量为0时，就要将另一只手全取
+			{
+				count += left[i] + right[i];
+			}
+			else
+			{
+				//统计左右手手套的个数
+				left_sum += left[i];
+				right_sum += right[i];
+				//统计左右手各颜色手套最少的个数（不包含0的情况）
+				left_min = min(left_min, left[i]);
+				right_min = min(right_min, right[i]);
+			}
+		}
+		//左右手分别讨论，在某一只手的手套中，除最少个数颜色手套，
+		//其余的总和 + 1 即可必定拿到所有颜色的某一只手套，
+		//（left_sum - left_min + 1 或 right_sum - right_min + 1）
+		//此时再拿一只另一只手的手套即可必定凑成一双，所以最后要 + 1
+		//若要考虑最少，则在左右手中取上面计算的总和数较小的那一组即可
+		return count + min(left_sum - left_min + 1, right_sum - right_min + 1) + 1;
+	}
+};
+
+int main()
+{
+	int i = 0;//颜色数
+	while (cin >> i)
+	{
+		vector<int> left(i);
+		vector<int> right(i);
+		for (auto& a : left)
+			cin >> a;
+		for (auto& a : right)
+			cin >> a;
+		Gloves s;
+		cout << s.findMinimum(i, left, right) << endl;
+
+	}
+
+	return 0;
+}
