@@ -1,0 +1,63 @@
+#include<iostream>
+#include<vector>
+#include<string>
+
+using namespace std;
+
+//超长正整数相加
+
+string AddLongInteger(string addend, string augend)
+{
+	int size1 = addend.size();
+	int size2 = augend.size();
+
+	int size = size1 > size2 ? size1 : size2;
+
+	vector<int> add1(size);
+	vector<int> add2(size);
+
+	//将两组字符串反向存入数组
+	for (int i = 0; i < size1; i++)
+	{
+		add1[i] = addend[size1 - i - 1] - '0';
+	}
+	for (int i = 0; i < size2; i++)
+	{
+		add2[i] = augend[size2 - i - 1] - '0';
+	}
+
+	//开辟一个新数组用来存放和
+	vector<int> add(size + 1, 0);
+	int i;
+	for (i = 0; i < size; i++)
+	{
+		add[i] += add1[i] + add2[i];
+		if (add[i] > 9)
+		{
+			add[i + 1] = add[i] / 10;
+			add[i] %= 10;
+		}
+	}
+	if (add[i] > 0)
+		size += 1;
+	string end;
+	for (i = 0; i < size; i++)
+	{
+		end.push_back(add[size - i - 1] + '0');
+	}
+	//end.push_back('\0');  //string本身自带'\0'
+
+	return end;
+}
+
+int main()
+{
+	string add;
+	string aug;
+
+	while (cin >> add >> aug){
+		cout << AddLongInteger(add, aug) << endl;
+	}
+
+	return 0;
+}
