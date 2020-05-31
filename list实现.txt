@@ -1,0 +1,164 @@
+#include<iostream>
+
+using namespace std;
+
+
+template <class T>
+struct ListNode
+{
+	T _value;
+	ListNode<T>* _prev;
+	ListNode<T>* _next;
+
+	ListNode(const T& val = T())
+		:_value(val)
+		, _prev(nullptr)
+		, _next(nullptr)
+	{
+
+	}
+};
+
+class C
+{
+public:
+	int _a = 1;
+	int _b = 2;
+	int _c = 3;
+};
+
+
+//通过封装节点List迭代器
+template <class T>
+struct ListIterator
+{
+	typedef ListNode<T> Node;
+	typedef ListIterator<T> Iter;
+	//封装节点
+	Node* _node;
+
+	ListIterator(Node* node)
+		:_node(node)
+	{
+
+	}
+
+	//*Iterator: 解引用——》获取到节点中的value
+	T& operator*()
+	{
+		return _node->_value;
+	}
+
+	Iter operator++()
+	{
+		_node = _node->_next;
+		return *this;
+	}
+
+	Iter operator--()
+	{
+		_node = _node->_prev;
+		return *this;
+	}
+
+	bool operator!=(const Iter& it)
+	{
+		return _node != it._node;
+	}
+
+	T* operator->()
+	{
+		return &_node->_value;
+	}
+
+};
+
+
+//list实现:双向带头循环链表
+template <class T>
+class List
+{
+public:
+	typedef ListNode<T> Node;
+	typedef ListIterator<T> iterator;
+
+	//创建一个空链表
+	List()
+		:_header(new Node)
+	{
+		_header->_prev = _header->_next = _header;
+	}
+	//尾插
+	void pushBack(const T& val)
+	{
+		Node* newNode = new Node(val);
+		Node* prev = _header->_prev;
+		
+		//重新链接
+		prev->_next = newNode;
+		newNode->_prev = prev;
+		newNode->_next = _header;
+		_header->_prev = newNode;
+	}
+
+	//
+
+	iterator begin()//第一个有效元素位置
+	{
+		return iterator(_header->_next);
+	}
+
+	iterator end()//最后一个元素的下一个位置
+	{
+		return iterator(_header);
+	}
+
+
+private :
+	Node* _header;
+};
+
+
+void test()
+{
+	List<int> lst;
+	lst.pushBack(1);
+	lst.pushBack(2);
+	lst.pushBack(3); 
+	lst.pushBack(4);
+
+	List<int>::iterator it = lst.begin();
+
+	while (it != lst.end())
+	{
+		cout << *it << " ";
+		++it;
+	}
+	cout << endl;
+
+}
+
+void test2()
+{
+	List<C> lst2;
+	lst2.pushBack(C());
+	lst2.pushBack(C());
+	lst2.pushBack(C());
+	lst2.pushBack(C());
+	List<C>::iterator it = lst2.begin();
+	while (it != lst2.end())
+	{
+		cout << (*it)._a << (*it)._b << (*it)._c << endl;
+		cout << it->_a << it->_b << it->_c << endl;
+		++it;
+	}
+}
+
+int main()
+{
+	//test();
+	test2();
+
+
+	return 0;
+} 
