@@ -1,0 +1,243 @@
+/*
+    1.数据设计
+    2.模块化设计
+    3.实现过程
+*/
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>       //光标设置的API
+#include <time.h>          //事物随机
+#include <conio.h>         //按键监控
+//数据设计
+//////////////////////////////////////////
+//     辅助宏定义
+#define map_hight 25        //窗口的属性
+#define map_width 60
+#define snake_size 50     //蛇的最大节数
+//              食物的结构体
+struct
+{
+    //如何去定位：坐标
+    int x;
+    int y;
+}food;
+/////////////////////////////////////////
+//蛇的结构体
+struct
+{
+    //记录每一节蛇的坐标
+    int x[snake_size];
+    int y[snake_size];
+    int len;      //蛇的长度
+    int speed;   //蛇的移动速度
+}snake;
+
+//////////////////////////////////////////
+//           全局变量
+int key = 'w';          //初始化移动方向
+int change_flag = 0;    //蛇的变化的标记
+
+//////////////////////////////////////////
+//模块化设计--->功能的划分--->抽象到函数
+//      怎们抽象，集体了解目标的逻辑
+/////////////////////////////////////////
+//1.画地图
+void draw_map();
+//2.食物的产生
+void create_food();
+//3.按键操作
+void key_down();
+//4.蛇的状态
+int snake_status();
+//5.辅助函数：光标移动
+void gotoxy(int x, int y);   //自己实现
+
+
+int main()
+{
+
+    draw_map();
+    while(1)
+    {
+        create_food();
+        Sleep(snake.speed);
+        key_down();
+        if(!snake_status())
+        {
+            break;
+        }
+    }
+    gotoxy(map_width / 2, map_hight / 2);
+    printf("Gameover");
+    return 0;
+}
+
+//1.画地图
+void draw_map()
+{   //■ :蛇身  ★：食物
+    srand((unsigned int)time(NULL));   //随机函数种子
+    //1.圈地
+    //1.1左右边框
+    for(int i=0; i<=map_hight; i++)
+    {
+        gotoxy(0, i);
+        printf("■");
+        gotoxy(map_width, i);
+        printf("■");
+    }
+    //1.2上下边框
+    for(int i=0; i<=map_width; i+=2)
+    {
+        gotoxy(i, 0);
+        printf("■");
+        gotoxy(i, map_hight);
+        printf("■");
+    }
+    //2.画蛇
+    //2.1确定蛇的属性
+    snake.len = 3;
+    snake.speed = 300;
+    snake.x[0] = map_width/2;
+    snake.y[0] = map_hight/2;
+
+    //2.2画蛇
+    //蛇头
+    gotoxy(snake.x[0], snake.y[0]);
+    printf("■");
+    //蛇身
+    for(int k=1; k<snake.len; k++)
+    {
+        snake.x[k] = snake.x[k-1]+2;
+        snake.y[k] = snake.y[k-1];
+        gotoxy(snake.x[k], snake.y[k]);
+        printf("■");
+    }
+    //3.画食物
+        //3.1确定坐标
+    food.x = 2*rand()%(map_width-4)+2;
+    food.y = rand()%(map_hight-2)+1;
+        //3.2画出来
+        gotoxy(food.x, food.y);
+        printf("★");
+}
+
+//2.食物的产生
+void create_food()
+{
+    //蛇把食物吃了
+    if(snake.x[0] == food.x
+       &&snake.y[0] == food.y)
+    {
+        srand((unsigned int)time(NULL));
+        //产生的食物不能在蛇身上，并且坐标要是偶数
+        while(1)
+        {
+            int flag = 1;
+            food.x = rand() % (map_width - 4) + 2;
+            food.y = rand() % (map_hight - 2) + 1;
+            //产生的食物不能在蛇身上
+            for (int k=0; k<snake.len; k++)
+            {
+                if(snake.x[k] == food.x
+                   && snake.y[k] == food.y)
+                {
+                   flag = 0;   //食物不合适标志
+                   break;
+                }
+            }
+            if(flag && food.x % 2 == 0)
+            {
+                break;
+            }
+        }
+        gotoxy(food.x, food.y);
+        printf("★");
+        snake.len++;
+        change_flag = 1;  //蛇的标记是1
+    }
+    //产生新的食物
+}
+//3.按键操作
+void key_down()
+{
+    //无按键处理
+    if(_kbhit())
+    {//有按键接收
+        fflush(stdin);
+        key = _getch();
+    }
+    //擦除最后的一节蛇身
+    if(!change_flag)
+    {
+        gotoxy(snake.x[snake.len-1],snake.y[snake.len-1]);
+        printf("  ");
+    }
+    //后面的蛇身
+    for (int i=snake.len-1; i>0; i--)
+    {
+        snake.x[i] = snake.x[i-1];
+        snake.y[i] = snake.y[i-1];
+    }
+    //移动方向处理
+    switch (key)
+    {
+        case 'w':
+        case 'W':
+            snake.y[0]--;
+            break;
+        case 's':
+        case 'S':
+            snake.y[0]++;
+            break;
+        case 'a':
+        case 'A':
+            snake.x[0]-=2;  //一个符号占两个字符■
+            break;
+        case 'd':
+        case 'D':
+            snake.x[0]+=2;
+            break;
+    }
+    gotoxy(snake.x[0], snake.y[0]);
+    printf("■");
+    change_flag = 0;
+    gotoxy(map_hight+2,0);   //移动不能一直看着光标
+}
+//4.蛇的状态
+int snake_status()
+{
+    if(snake.x[0] == 0
+       || snake.x[0] == map_width
+       || snake.y[0] == 0
+       || snake.y[0] == map_hight)
+    return 0;
+    //蛇头不能撞自己
+    for(int k=1; k<snake.len; k++)
+    {
+        if(snake.x[0] == snake.x[k]
+           && snake.y[0] == snake.y[k])
+            return 0 ;
+    }
+    return 1;
+}
+//5.辅助函数：光标移动
+void gotoxy(int x, int y)   //自己实现
+{
+    //调用in32 API    去设置控制台的光标位置
+    //1.找到控制台的这个窗口
+    HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+    //2.光标结构体
+    COORD coord;
+    //3.设置坐标
+    coord.X = x;
+    coord.Y = y;
+    //4.同步到控制台
+    SetConsoleCursorPosition(handle,coord);
+}
+
+
+
+
+
