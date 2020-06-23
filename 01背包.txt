@@ -1,0 +1,43 @@
+#include<iostream>
+#include<vector>
+ 
+using namespace std;
+int main ()
+{
+    vector<int> Varr;
+    vector<int> Sarr;
+    int N = 0;
+    int S = 0;
+    cin >> S;
+    cin >> N;
+    for(int i = 0; i < N; i++)
+    {
+        int size = 0;
+        int value = 0;
+        cin >> size >> value;
+        Sarr.push_back(size);
+        Varr.push_back(value);
+    }
+    vector<vector<int>> arr(N+1, vector<int>(S+1));
+     
+    for(int i = 0; i <= N; i++)
+    {
+        for(int j =0; j <= S; j++)
+        {
+            if(i == 0 || j == 0)
+                arr[i][j] = 0;
+            else if(Sarr[i-1] <= j)
+            {
+                arr[i][j] = max(Varr[i-1] + arr[i-1][j-Sarr[i-1]], arr[i-1][j]);
+            }
+            else
+            {
+                arr[i][j] = arr[i-1][j];
+            }
+        }
+    }
+    cout << arr[N][S] << endl;
+     
+     
+    return 0;
+}
