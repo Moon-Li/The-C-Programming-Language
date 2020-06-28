@@ -1,0 +1,27 @@
+
+//a，b，c，是0-9之间的整数，a，b，c互不相同，abc和acc是两个不同的三位整数，现给一个n，问有多少对abc和acc能满足abc+acc=n（a != 0）
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int n = 0;
+	while (cin >> n)
+	{
+		int a = n / 200;
+		int b = 0;
+		int c = 0;
+		for (c = 0; c <= 9; c++)
+		{
+			int num = n % 200;
+			b = (num - c * 12) / 10;
+			if (b > 9)
+				continue;
+			if (b >= 0 && (a * 200 + b * 10 + c * 12) == n)
+				cout << (a * 100 + b * 10 + c) << " " << (a * 100 + c * 11) << endl;
+		}
+	}
+
+
+	return 0;
+}
