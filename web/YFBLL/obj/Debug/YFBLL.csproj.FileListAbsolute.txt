@@ -1,0 +1,11 @@
+F:\学习资料\asp.net课设\web\YFBLL\bin\Debug\YFBLL.dll
+F:\学习资料\asp.net课设\web\YFBLL\bin\Debug\YFBLL.pdb
+F:\学习资料\asp.net课设\web\YFBLL\bin\Debug\YFDAL.dll
+F:\学习资料\asp.net课设\web\YFBLL\bin\Debug\YFMode.dll
+F:\学习资料\asp.net课设\web\YFBLL\bin\Debug\YFMode.pdb
+F:\学习资料\asp.net课设\web\YFBLL\obj\Debug\YFBLL.csprojResolveAssemblyReference.cache
+F:\学习资料\asp.net课设\web\YFBLL\obj\Debug\YFBLL.dll
+F:\学习资料\asp.net课设\web\YFBLL\obj\Debug\YFBLL.pdb
+F:\学习资料\asp.net课设\web\YFBLL\bin\Debug\YFUtillity.dll
+F:\学习资料\asp.net课设\web\YFBLL\bin\Debug\YFDAL.pdb
+F:\学习资料\asp.net课设\web\YFBLL\bin\Debug\YFUtillity.pdb

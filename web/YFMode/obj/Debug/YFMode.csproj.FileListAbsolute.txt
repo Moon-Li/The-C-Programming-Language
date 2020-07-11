@@ -1,0 +1,5 @@
+F:\学习资料\asp.net课设\web\YFMode\bin\Debug\YFMode.dll
+F:\学习资料\asp.net课设\web\YFMode\bin\Debug\YFMode.pdb
+F:\学习资料\asp.net课设\web\YFMode\obj\Debug\YFMode.csprojResolveAssemblyReference.cache
+F:\学习资料\asp.net课设\web\YFMode\obj\Debug\YFMode.dll
+F:\学习资料\asp.net课设\web\YFMode\obj\Debug\YFMode.pdb

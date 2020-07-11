@@ -1,0 +1,9 @@
+F:\学习资料\asp.net课设\web\YFDAL\bin\Debug\YFDAL.dll
+F:\学习资料\asp.net课设\web\YFDAL\bin\Debug\YFDAL.pdb
+F:\学习资料\asp.net课设\web\YFDAL\bin\Debug\YFMode.dll
+F:\学习资料\asp.net课设\web\YFDAL\bin\Debug\YFUtillity.dll
+F:\学习资料\asp.net课设\web\YFDAL\bin\Debug\YFMode.pdb
+F:\学习资料\asp.net课设\web\YFDAL\bin\Debug\YFUtillity.pdb
+F:\学习资料\asp.net课设\web\YFDAL\obj\Debug\YFDAL.csprojResolveAssemblyReference.cache
+F:\学习资料\asp.net课设\web\YFDAL\obj\Debug\YFDAL.dll
+F:\学习资料\asp.net课设\web\YFDAL\obj\Debug\YFDAL.pdb
