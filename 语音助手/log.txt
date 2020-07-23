@@ -1,0 +1,84 @@
+[ 1597668107 ][ Normal ][ command load success ][ servant.hpp ][ 149 ]
+[ 1597668107 ][ Normal ][ Servent init success ][ servant.hpp ][ 120 ]
+				正在录音...
+				正在识别...
+[ 1597668112 ][ Normal ][ run ASR ][ servant.hpp ][ 264 ]
+[ 1597668112 ][ Normal ][ run chat ][ servant.hpp ][ 281 ]
+[ 1597668112 ][ Normal ][ I say# 你在做什么呢？ ][ servant.hpp ][ 282 ]
+[ 1597668112 ][ Normal ][ Saber say# 这不是在跟你聊天嘛。 ][ servant.hpp ][ 285 ]
+[ 1597668113 ][ Normal ][ run TTL ][ servant.hpp ][ 288 ]
+				正在录音...
+				正在识别...
+[ 1597668119 ][ Normal ][ run ASR ][ servant.hpp ][ 264 ]
+[ 1597668119 ][ Normal ][ run chat ][ servant.hpp ][ 281 ]
+[ 1597668119 ][ Normal ][ I say# 给我唱个歌吧！ ][ servant.hpp ][ 282 ]
+[ 1597668119 ][ Normal ][ Saber say# 说歌名 ][ servant.hpp ][ 285 ]
+[ 1597668120 ][ Normal ][ run TTL ][ servant.hpp ][ 288 ]
+				正在录音...
+				正在识别...
+[ 1597668125 ][ Normal ][ run ASR ][ servant.hpp ][ 264 ]
+[ 1597668125 ][ Normal ][ run chat ][ servant.hpp ][ 281 ]
+[ 1597668125 ][ Normal ][ I say# 唱一首再见。 ][ servant.hpp ][ 282 ]
+[ 1597668126 ][ Normal ][ Saber say# 唱的不好听 ][ servant.hpp ][ 285 ]
+[ 1597668126 ][ Normal ][ run TTL ][ servant.hpp ][ 288 ]
+				正在录音...
+				正在识别...
+[ 1597668132 ][ Normal ][ run ASR ][ servant.hpp ][ 264 ]
+[ 1597668132 ][ Normal ][ run chat ][ servant.hpp ][ 281 ]
+[ 1597668132 ][ Normal ][ I say# 再见。 ][ servant.hpp ][ 282 ]
+[ 1597668132 ][ Normal ][ Saber say# 好吧。拜拜 ][ servant.hpp ][ 285 ]
+[ 1597668132 ][ Normal ][ run TTL ][ servant.hpp ][ 288 ]
+				正在录音...
+				正在识别...
+[ 1597668138 ][ Normal ][ run ASR ][ servant.hpp ][ 264 ]
+[ 1597668138 ][ Normal ][ run chat ][ servant.hpp ][ 281 ]
+[ 1597668138 ][ Normal ][ I say# 明天会更好。 ][ servant.hpp ][ 282 ]
+[ 1597668138 ][ Normal ][ Saber say# 说得没错，后天也会更好。 ][ servant.hpp ][ 285 ]
+[ 1597668139 ][ Normal ][ run TTL ][ servant.hpp ][ 288 ]
+				正在录音...
+				正在识别...
+[ 1597668146 ][ Normal ][ run ASR ][ servant.hpp ][ 264 ]
+[ 1597668146 ][ Normal ][ run chat ][ servant.hpp ][ 281 ]
+[ 1597668146 ][ Normal ][ I say# 再见的歌词。 ][ servant.hpp ][ 282 ]
+[ 1597668146 ][ Normal ][ Saber say# 好舍不得啊！！！ ][ servant.hpp ][ 285 ]
+[ 1597668147 ][ Normal ][ run TTL ][ servant.hpp ][ 288 ]
+				正在录音...
+				正在识别...
+[ 1597668152 ][ Normal ][ run ASR ][ servant.hpp ][ 264 ]
+[ 1597668152 ][ Normal ][ run chat ][ servant.hpp ][ 281 ]
+[ 1597668152 ][ Normal ][ I say# 你在说什么呀？ ][ servant.hpp ][ 282 ]
+[ 1597668152 ][ Normal ][ Saber say# 说你爱我 ][ servant.hpp ][ 285 ]
+[ 1597668152 ][ Normal ][ run TTL ][ servant.hpp ][ 288 ]
+				正在录音...
+				正在识别...
+[ 1597668158 ][ Normal ][ run ASR ][ servant.hpp ][ 264 ]
+[ 1597668158 ][ Normal ][ run chat ][ servant.hpp ][ 281 ]
+[ 1597668158 ][ Normal ][ I say# 爱你。 ][ servant.hpp ][ 282 ]
+[ 1597668158 ][ Normal ][ Saber say# 也许上辈子我们就相爱了 ][ servant.hpp ][ 285 ]
+[ 1597668158 ][ Normal ][ run TTL ][ servant.hpp ][ 288 ]
+				正在录音...
+				正在识别...
+[ 1597668166 ][ Normal ][ run ASR ][ servant.hpp ][ 264 ]
+[ 1597668166 ][ Normal ][ run chat ][ servant.hpp ][ 281 ]
+[ 1597668166 ][ Normal ][ I say# 不会的，我不爱你。 ][ servant.hpp ][ 282 ]
+[ 1597668166 ][ Normal ][ Saber say# 有本事你一辈子不爱我。 ][ servant.hpp ][ 285 ]
+[ 1597668166 ][ Normal ][ run TTL ][ servant.hpp ][ 288 ]
+				正在录音...
+				正在识别...
+[ 1597668174 ][ Normal ][ run ASR ][ servant.hpp ][ 264 ]
+[ 1597668174 ][ Normal ][ run chat ][ servant.hpp ][ 281 ]
+[ 1597668174 ][ Normal ][ I say# 我就有这个本事。 ][ servant.hpp ][ 282 ]
+[ 1597668174 ][ Normal ][ Saber say# 有本事好好学习吧 ][ servant.hpp ][ 285 ]
+[ 1597668174 ][ Normal ][ run TTL ][ servant.hpp ][ 288 ]
+				正在录音...
+				正在识别...
+[ 1597668180 ][ Normal ][ run ASR ][ servant.hpp ][ 264 ]
+[ 1597668180 ][ Normal ][ run chat ][ servant.hpp ][ 281 ]
+[ 1597668180 ][ Normal ][ I say# 那好吧，那我学习了。 ][ servant.hpp ][ 282 ]
+[ 1597668181 ][ Normal ][ Saber say# 怎么学？ ][ servant.hpp ][ 285 ]
+[ 1597668181 ][ Normal ][ run TTL ][ servant.hpp ][ 288 ]
+				正在录音...
+				正在识别...
+[ 1597668186 ][ Normal ][ run ASR ][ servant.hpp ][ 264 ]
+[ 1597668186 ][ Normal ][ system exit ][ servant.hpp ][ 275 ]
+				Saber say# 收到，程序退出！
